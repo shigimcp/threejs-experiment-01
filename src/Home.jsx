@@ -18,7 +18,6 @@ export default function Home() {
             <Credits />
 
             <Canvas>
-            {/* <Canvas orthographic camera={{ position: [0, 0, 50], zoom: 10, up: [0, 0, 1], far: 10000 }}> */}
                 <Suspense fallback={null}>
                     <Logo />
                     <Cubes />
@@ -26,11 +25,6 @@ export default function Home() {
                     <Environment />
                 </Suspense>
             </Canvas>
-
-            {/* <Logo /> */}
         </>
     );
 }
-
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);

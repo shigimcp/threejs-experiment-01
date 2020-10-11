@@ -25,7 +25,6 @@ extend({ MapControls })
 
 function Cell({ color, shape, fillOpacity }) {
     return (
-        // <mesh>
         <mesh scale={[0.005, -0.005, 0.005]}>
             <meshBasicMaterial attach="material" color={color} opacity={fillOpacity} depthWrite={false} transparent />
             <shapeBufferGeometry attach="geometry" args={[shape]} />
@@ -76,12 +75,8 @@ function Svg({ url }) {
 export default function Logo() {
     return (
         <>
-            {/* <Svg url="../images/shigeru_logo_ko.svg" /> */}
-            <Svg url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-02/main/src/.github/images/shigeru_logo.svg" />
+            <Svg url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-02/main/src/.github/images/shigeru_logo_test.svg" />
             <Svg url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-02/main/src/.github/images/thoughtBubble.svg" />
-            {/* <Controls /> */}
         </>
     )
 }
-
-// ReactDOM.render(<App />, document.getElementById('root'))
