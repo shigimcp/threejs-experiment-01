@@ -2,21 +2,10 @@
 
 // REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1
 
-// import ReactDOM from 'react-dom';
-// import React, { Suspense, useState, useRef, useEffect, useMemo } from 'react';
 import React from 'react';
-// import { useState, useRef, useEffect, useMemo } from 'react';
-// import { useState, useEffect } from 'react';
 import { useRef, useMemo } from 'react';
 
-// import * as THREE from 'three';
-// import { Canvas } from 'react-three-fiber';
-// import { Box3, Sphere } from 'three';
-// import { useFrame } from 'react-three-fiber';
-// import { Canvas, extend, useLoader, useThree, useFrame } from 'react-three-fiber';
-// import { useThree, useFrame } from 'react-three-fiber';
-// import { useThree } from 'react-three-fiber';
-// import { extend, useLoader } from 'react-three-fiber';
+import * as THREE from 'three';
 import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
 import { useFrame } from 'react-three-fiber';
@@ -47,9 +36,6 @@ import { useFrame } from 'react-three-fiber';
 
 //#region ==================== LOGOMESH - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
-// function LogoMesh({ color, shape, fillOpacity }) {
-// function LogoMesh({ color, depthNum, shape, fillOpacity, strokeColor }) {
-// function LogoMesh({ color, depthNum, shape, fillOpacity }) {
 function LogoMesh({ color, shape, fillOpacity }) {
 
     //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
@@ -67,10 +53,20 @@ function LogoMesh({ color, shape, fillOpacity }) {
     //#region -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
     //        -------------------- PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
-    var extrudeSettings;
-    // var zPos;
-    var depthNum = 50;
-    // depthNum = 5;
+    var zPos;
+
+    var extrudeSettings = {
+        curveSegments: 3, 
+        steps: 2, 
+        depth: 50, 
+        bevelEnabled: false, 
+        // bevelThickness: 30, 
+        // bevelSize: 10, 
+        // bevelOffset: 0, 
+        // bevelSegments: 20, 
+        // extrudePath: [some THREE.Curve], 
+        // UVGenerator: [some Oject]
+    };
 
 
     // Checks if black or white. Should be made more dynamic ultimately.
@@ -79,58 +75,34 @@ function LogoMesh({ color, shape, fillOpacity }) {
     if (color !== 1) {
     // if (color === 1) {
 
-        // console.log('');
-        // // console.log('color = ' + color);
-        // console.log('color === 1 ' + color);
-        // console.log(color);
-        // // console.log('fillOpacity = ' + fillOpacity);
-
-        extrudeSettings = {
-            curveSegments: 5,
-            steps: 2,
-            depth: depthNum,
-            bevelEnabled: true,
-            bevelThickness: 3,
-            bevelSize: 3,
-            bevelOffset: 1,
-            bevelSegments: 2,
-            // extrudePath: [some THREE.Curve],
-            // UVGenerator: [some Oject]
-        }
+        console.log('');
+        // console.log('color = ' + color);
+        console.log('color === 1 ' + color);
+        console.log(color);
+        // console.log('fillOpacity = ' + fillOpacity);
 
         // zPos = 1;
-        // zPos = 0;
+        zPos = 0;
 
     } else {
 
-        // console.log('');
-        // // console.log('color = ' + color);
-        // console.log('color !== 1 ' + color);
-        // console.log(color);
-        // // console.log('fillOpacity = ' + fillOpacity);
+        console.log('');
+        // console.log('color = ' + color);
+        console.log('color !== 1 ' + color);
+        console.log(color);
+        // console.log('fillOpacity = ' + fillOpacity);
 
-        extrudeSettings = {
-            curveSegments: 5,
-            steps: 2,
-            depth: depthNum,
-            bevelEnabled: true,
-            bevelThickness: 3,
-            bevelSize: 3,
-            bevelOffset: 1,
-            bevelSegments: 2,
-            // extrudePath: [some THREE.Curve],
-            // UVGenerator: [some Oject]
-        }
 
-        // zPos = 0;
+        zPos = 0;
+        // zPos = -1;
+        // thisBlend = THREE.SubtractiveBlending;
+        // thisCull = THREE.CullFaceNone;
     }
 
-    // <mesh scale={[0.005, -0.005, 0.005]} position={[0, 0, zPos]} rotation={[0, THREE.Math.degToRad(-30), THREE.Math.degToRad(-30)]}>
 
     return (
-        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
-            <meshPhongMaterial attach="material" color={color} side={"doubleSide"} opacity={fillOpacity} depthWrite={true} />
-            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} /> */}
+        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
+            <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} />
             <extrudeBufferGeometry attach="geometry" args={[[shape], extrudeSettings]} />
         </mesh>
     )
@@ -150,9 +122,9 @@ function LogoShape({ url }) {
     const { paths } = useLoader(SVGLoader, url)
 
     const shapes = useMemo(() => 
-        paths.flatMap((p, i) => 
-            p.toShapes(true).map((shape) => 
-                ({ shape, color: p.color, fillOpacity: p.userData.style.fillOpacity })
+        paths.flatMap((thisPath, i) => 
+            thisPath.toShapes(true).map((shape) => 
+                ({ shape, color: thisPath.color, fillOpacity: thisPath.userData.style.fillOpacity })
             )
         ), [paths]
     )
@@ -195,20 +167,7 @@ function LogoShape({ url }) {
 export default function Logo() {
     return (
         <>
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test.svg" />
-
-{/* 
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_rev.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_ko.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_ko_rev.svg" />
             <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_transparent.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test.svg" />
-
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/0elements/thoughtBubble.svg" />
-
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo.svg" depthNum="2" color="#000000" />
- */}
         </>
     )
 }

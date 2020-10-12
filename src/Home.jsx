@@ -15,8 +15,6 @@ import Logo from "./components/Logo";
 export default function Home() {
     return (
         <>
-            {/* <Credits /> */}
-
             <Canvas>
                 <Suspense fallback={null}>
                     <Logo />
