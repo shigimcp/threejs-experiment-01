@@ -2,11 +2,11 @@ import React from "react";
 // import ReactDOM from "react-dom";
 import { Suspense } from 'react';
 
-import Credits from "./components/Credits"
+// import Credits from "./components/Credits"
 import { Canvas } from "react-three-fiber";
 import Cubes from "./components/Cubes";
 import Lights from "./components/Lights";
-import Environment from "./components/Scene";
+import Scene from "./components/Scene";
 
 import Logo from "./components/Logo";
 
@@ -15,14 +15,14 @@ import Logo from "./components/Logo";
 export default function Home() {
     return (
         <>
-            <Credits />
+            {/* <Credits /> */}
 
             <Canvas>
                 <Suspense fallback={null}>
                     <Logo />
                     <Cubes />
                     <Lights />
-                    <Environment />
+                    <Scene />
                 </Suspense>
             </Canvas>
         </>
