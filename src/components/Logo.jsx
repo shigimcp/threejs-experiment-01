@@ -2,15 +2,26 @@
 
 // REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1
 
+// import ReactDOM from 'react-dom';
+// import React, { Suspense, useState, useRef, useEffect, useMemo } from 'react';
 import React from 'react';
+// import { useState, useRef, useEffect, useMemo } from 'react';
+// import { useState, useEffect } from 'react';
 import { useRef, useMemo } from 'react';
 
 import * as THREE from 'three';
+// import { Canvas } from 'react-three-fiber';
+// import { Box3, Sphere } from 'three';
+// import { useFrame } from 'react-three-fiber';
+// import { Canvas, extend, useLoader, useThree, useFrame } from 'react-three-fiber';
+// import { useThree, useFrame } from 'react-three-fiber';
+// import { useThree } from 'react-three-fiber';
+// import { extend, useLoader } from 'react-three-fiber';
 import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
-import { useFrame } from 'react-three-fiber';
-// import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { useFrame } from 'react-three-fiber';
 
+// import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
 // extend({ MapControls });
 
 //#endregion ==================== IMPORTS ====================
@@ -36,6 +47,9 @@ import { useFrame } from 'react-three-fiber';
 
 //#region ==================== LOGOMESH - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
+// function LogoMesh({ color, shape, fillOpacity }) {
+// function LogoMesh({ color, depthNum, shape, fillOpacity, strokeColor }) {
+// function LogoMesh({ color, depthNum, shape, fillOpacity }) {
 function LogoMesh({ color, shape, fillOpacity }) {
 
     //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
@@ -53,14 +67,21 @@ function LogoMesh({ color, shape, fillOpacity }) {
     //#region -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
     //        -------------------- PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
+    // var extrudeSettings;
     var zPos;
+    // var depthNum = 50;
+    // depthNum = 5;
+    // var thisBlend;
+    // var thisCull;
+
 
     var extrudeSettings = {
-        curveSegments: 3, 
+        curveSegments: 7, 
         steps: 2, 
         depth: 50, 
         bevelEnabled: false, 
-        // bevelThickness: 30, 
+        // bevelEnabled: true, 
+        // bevelThickness: 30,
         // bevelSize: 10, 
         // bevelOffset: 0, 
         // bevelSegments: 20, 
@@ -69,10 +90,10 @@ function LogoMesh({ color, shape, fillOpacity }) {
     };
 
 
-    // Checks if black or white. Should be made more dynamic ultimately.
+    //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
-    // if (color.r !== 1) {
-    if (color !== 1) {
+    if (color.r !== 1) {
+    // if (color !== 1) {
     // if (color === 1) {
 
         console.log('');
@@ -81,8 +102,11 @@ function LogoMesh({ color, shape, fillOpacity }) {
         console.log(color);
         // console.log('fillOpacity = ' + fillOpacity);
 
-        // zPos = 1;
-        zPos = 0;
+        zPos = 1;
+        // zPos = 0;
+
+        // thisBlend = THREE.NormalBlending;
+        // thisCull = THREE.CullFaceFrontBack;
 
     } else {
 
@@ -92,18 +116,27 @@ function LogoMesh({ color, shape, fillOpacity }) {
         console.log(color);
         // console.log('fillOpacity = ' + fillOpacity);
 
+        zPos = -1;
+        // zPos = 0;
 
-        zPos = 0;
-        // zPos = -1;
         // thisBlend = THREE.SubtractiveBlending;
         // thisCull = THREE.CullFaceNone;
     }
 
+    //#endregion -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
+
 
     return (
+        // <mesh scale={[0.005, -0.005, 0.005]} position={[0, 0, zPos]} rotation={[0, THREE.Math.degToRad(-30), THREE.Math.degToRad(-30)]}>
+        // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
         <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
+            {/* <meshPhongMaterial attach="material" color={color} side={"doubleSide"} opacity={fillOpacity} depthWrite={true} /> */}
+            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} /> */}
+            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} blending={thisBlend} cullFace={thisCull} /> */}
             <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} />
+
             <extrudeBufferGeometry attach="geometry" args={[[shape], extrudeSettings]} />
+            {/* <extrudeBufferGeometry attach="geometry" args={[[shape], [extrudeSettings]]} /> */}
         </mesh>
     )
 
@@ -135,7 +168,7 @@ function LogoShape({ url }) {
     const logoGroupRef = useRef()
 
 
-    //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
+    //#region -------------------- LOGO flat --------------------
 
     // useEffect(() => {
     //     const box = new Box3().setFromObject(logoGroupRef.current)
@@ -144,9 +177,17 @@ function LogoShape({ url }) {
     //     setCenter([-sphere.center.x, -sphere.center.y, 0])
     // }, [])
 
-    useFrame(() => {
-        logoGroupRef.current.rotation.y += 0.025;
-    });
+    //#endregion -------------------- LOGO flat --------------------
+
+
+    //#region -------------------- LOGO spin --------------------
+
+    // useFrame(() => {
+    //     logoGroupRef.current.rotation.y += 0.025;
+    // });
+
+    //#endregion -------------------- LOGO spin --------------------
+
 
     return (
         <group position={center} ref={logoGroupRef}>
@@ -155,8 +196,6 @@ function LogoShape({ url }) {
             ))}
         </group>
     )
-
-    //#endregion -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
 }
 
 //#endregion ==================== LOGOSHAPE - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
@@ -167,7 +206,23 @@ function LogoShape({ url }) {
 export default function Logo() {
     return (
         <>
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test.svg" />
+
+{/* 
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_rev.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_ko.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_ko_rev.svg" />
             <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_transparent.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test.svg" />
+
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/0elements/thoughtBubble.svg" />
+
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo.svg" depthNum="2" color="#000000" />
+
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/pathDirTest/l16_YES.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/pathDirTest/l30_NO.svg" />
+ */}
         </>
     )
 }
