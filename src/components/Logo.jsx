@@ -130,18 +130,9 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
 
     return (
-        // <mesh scale={[0.005, -0.005, 0.005]} position={[0, 0, zPos]} rotation={[0, THREE.Math.degToRad(-30), THREE.Math.degToRad(-30)]}>
-        // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
         <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
-        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]} rotation={[0, THREE.Math.degToRad(20), 0]}> */}
-        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]} rotation={[0, THREE.Math.degToRad(40), 0]}> */}
-            {/* <meshPhongMaterial attach="material" color={color} side={"doubleSide"} opacity={fillOpacity} depthWrite={true} /> */}
-            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} /> */}
-            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} blending={thisBlend} cullFace={thisCull} /> */}
             <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} />
-
             <extrudeBufferGeometry attach="geometry" args={[[shape], extrudeSettings]} />
-            {/* <extrudeBufferGeometry attach="geometry" args={[[shape], [extrudeSettings]]} /> */}
         </mesh>
     )
 
@@ -212,23 +203,6 @@ export default function Logo() {
     return (
         <>
             <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test02.svg" />
-
-{/* 
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_rev.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_ko.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_ko_rev.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_transparent.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test02.svg" />
-
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/0elements/thoughtBubble.svg" />
-
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo.svg" depthNum="2" color="#000000" />
-
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/pathDirTest/l16_YES.svg" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/pathDirTest/l30_NO.svg" />
- */}
         </>
     )
 }

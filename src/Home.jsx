@@ -6,21 +6,18 @@ import { Canvas } from "react-three-fiber";
 import Scene from "./components/Scene";
 import Lights from "./components/Lights";
 
-// import Cubes from "./components/Cubes";
+import Cubes from "./components/Cubes";
 import Logo from "./components/Logo";
-// import Credits from "./components/Credits"
 
 // import "./styles.css";
 
 export default function Home() {
     return (
         <>
-            {/* <Credits /> */}
-
             <Canvas>
                 <Suspense fallback={null}>
                     <Logo />
-                    {/* <Cubes /> */}
+                    <Cubes />
                     <Lights />
                     <Scene />
                 </Suspense>
