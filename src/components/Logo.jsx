@@ -92,7 +92,8 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
     //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
-    var zPos;
+    // var zPos;
+    var zPos = 0;
 
     if (color.r !== 1) {
     // if (color !== 1) {
@@ -104,7 +105,7 @@ function LogoMesh({ color, shape, fillOpacity }) {
         console.log(color);
         // console.log('fillOpacity = ' + fillOpacity);
 
-        zPos = 1;
+        // zPos = 1;
         // zPos = 0;
 
         // thisBlend = THREE.NormalBlending;
@@ -118,7 +119,7 @@ function LogoMesh({ color, shape, fillOpacity }) {
         console.log(color);
         // console.log('fillOpacity = ' + fillOpacity);
 
-        zPos = -1;
+        // zPos = -1;
         // zPos = 0;
 
         // thisBlend = THREE.SubtractiveBlending;
