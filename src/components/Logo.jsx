@@ -19,7 +19,7 @@ import * as THREE from 'three';
 // import { extend, useLoader } from 'react-three-fiber';
 import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
-// import { useFrame } from 'react-three-fiber';
+import { useFrame } from 'react-three-fiber';
 
 // import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
 // extend({ MapControls });
@@ -132,8 +132,8 @@ function LogoMesh({ color, shape, fillOpacity }) {
         // <mesh scale={[0.005, -0.005, 0.005]} position={[0, 0, zPos]} rotation={[0, THREE.Math.degToRad(-30), THREE.Math.degToRad(-30)]}>
         // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
         <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
-        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]} rotation={[0, THREE.Math.degToRad(20), 0]}>
-        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]} rotation={[0, THREE.Math.degToRad(40), 0]}> */}
+        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]} rotation={[0, THREE.Math.degToRad(20), 0]}> */}
+        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]} rotation={[0, THREE.Math.degToRad(40), 0]}> */}
             {/* <meshPhongMaterial attach="material" color={color} side={"doubleSide"} opacity={fillOpacity} depthWrite={true} /> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} /> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} blending={thisBlend} cullFace={thisCull} /> */}
@@ -186,9 +186,9 @@ function LogoShape({ url }) {
 
     //#region -------------------- LOGO spin --------------------
 
-    // useFrame(() => {
-    //     logoGroupRef.current.rotation.y += 0.025;
-    // });
+    useFrame(() => {
+        logoGroupRef.current.rotation.y += 0.025;
+    });
 
     //#endregion -------------------- LOGO spin --------------------
 
