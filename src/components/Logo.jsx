@@ -68,7 +68,7 @@ function LogoMesh({ color, shape, fillOpacity }) {
     //        -------------------- PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
     // var extrudeSettings;
-    var zPos;
+    // var zPos;
     // var depthNum = 50;
     // depthNum = 5;
     // var thisBlend;
@@ -92,36 +92,36 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
     //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
-    if (color.r !== 1) {
-    // if (color !== 1) {
-    // if (color === 1) {
+    // if (color.r !== 1) {
+    // // if (color !== 1) {
+    // // if (color === 1) {
 
-        console.log('');
-        // console.log('color = ' + color);
-        console.log('color === 1 ' + color);
-        console.log(color);
-        // console.log('fillOpacity = ' + fillOpacity);
+    //     console.log('');
+    //     // console.log('color = ' + color);
+    //     console.log('color === 1 ' + color);
+    //     console.log(color);
+    //     // console.log('fillOpacity = ' + fillOpacity);
 
-        zPos = 1;
-        // zPos = 0;
+    //     zPos = 1;
+    //     // zPos = 0;
 
-        // thisBlend = THREE.NormalBlending;
-        // thisCull = THREE.CullFaceFrontBack;
+    //     // thisBlend = THREE.NormalBlending;
+    //     // thisCull = THREE.CullFaceFrontBack;
 
-    } else {
+    // } else {
 
-        console.log('');
-        // console.log('color = ' + color);
-        console.log('color !== 1 ' + color);
-        console.log(color);
-        // console.log('fillOpacity = ' + fillOpacity);
+    //     console.log('');
+    //     // console.log('color = ' + color);
+    //     console.log('color !== 1 ' + color);
+    //     console.log(color);
+    //     // console.log('fillOpacity = ' + fillOpacity);
 
-        zPos = -1;
-        // zPos = 0;
+    //     zPos = -1;
+    //     // zPos = 0;
 
-        // thisBlend = THREE.SubtractiveBlending;
-        // thisCull = THREE.CullFaceNone;
-    }
+    //     // thisBlend = THREE.SubtractiveBlending;
+    //     // thisCull = THREE.CullFaceNone;
+    // }
 
     //#endregion -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
@@ -129,7 +129,8 @@ function LogoMesh({ color, shape, fillOpacity }) {
     return (
         // <mesh scale={[0.005, -0.005, 0.005]} position={[0, 0, zPos]} rotation={[0, THREE.Math.degToRad(-30), THREE.Math.degToRad(-30)]}>
         // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
-        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
+        // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
+        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]} rotation={[0, THREE.Math.degToRad(20), 0]}>
             {/* <meshPhongMaterial attach="material" color={color} side={"doubleSide"} opacity={fillOpacity} depthWrite={true} /> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} /> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} blending={thisBlend} cullFace={thisCull} /> */}
