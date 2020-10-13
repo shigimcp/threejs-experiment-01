@@ -92,36 +92,38 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
     //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
-    // if (color.r !== 1) {
-    // // if (color !== 1) {
-    // // if (color === 1) {
+    var zPos;
 
-    //     console.log('');
-    //     // console.log('color = ' + color);
-    //     console.log('color === 1 ' + color);
-    //     console.log(color);
-    //     // console.log('fillOpacity = ' + fillOpacity);
+    if (color.r !== 1) {
+    // if (color !== 1) {
+    // if (color === 1) {
 
-    //     zPos = 1;
-    //     // zPos = 0;
+        console.log('');
+        // console.log('color = ' + color);
+        console.log('color === 1 ' + color);
+        console.log(color);
+        // console.log('fillOpacity = ' + fillOpacity);
 
-    //     // thisBlend = THREE.NormalBlending;
-    //     // thisCull = THREE.CullFaceFrontBack;
+        zPos = 1;
+        // zPos = 0;
 
-    // } else {
+        // thisBlend = THREE.NormalBlending;
+        // thisCull = THREE.CullFaceFrontBack;
 
-    //     console.log('');
-    //     // console.log('color = ' + color);
-    //     console.log('color !== 1 ' + color);
-    //     console.log(color);
-    //     // console.log('fillOpacity = ' + fillOpacity);
+    } else {
 
-    //     zPos = -1;
-    //     // zPos = 0;
+        console.log('');
+        // console.log('color = ' + color);
+        console.log('color !== 1 ' + color);
+        console.log(color);
+        // console.log('fillOpacity = ' + fillOpacity);
 
-    //     // thisBlend = THREE.SubtractiveBlending;
-    //     // thisCull = THREE.CullFaceNone;
-    // }
+        zPos = -1;
+        // zPos = 0;
+
+        // thisBlend = THREE.SubtractiveBlending;
+        // thisCull = THREE.CullFaceNone;
+    }
 
     //#endregion -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
@@ -129,8 +131,9 @@ function LogoMesh({ color, shape, fillOpacity }) {
     return (
         // <mesh scale={[0.005, -0.005, 0.005]} position={[0, 0, zPos]} rotation={[0, THREE.Math.degToRad(-30), THREE.Math.degToRad(-30)]}>
         // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
-        // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
-        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]} rotation={[0, THREE.Math.degToRad(20), 0]}>
+        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
+        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]} rotation={[0, THREE.Math.degToRad(20), 0]}>
+        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]} rotation={[0, THREE.Math.degToRad(40), 0]}> */}
             {/* <meshPhongMaterial attach="material" color={color} side={"doubleSide"} opacity={fillOpacity} depthWrite={true} /> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} /> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} blending={thisBlend} cullFace={thisCull} /> */}
