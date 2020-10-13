@@ -19,7 +19,7 @@ import * as THREE from 'three';
 // import { extend, useLoader } from 'react-three-fiber';
 import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
-import { useFrame } from 'react-three-fiber';
+// import { useFrame } from 'react-three-fiber';
 
 // import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
 // extend({ MapControls });
@@ -52,6 +52,10 @@ import { useFrame } from 'react-three-fiber';
 // function LogoMesh({ color, depthNum, shape, fillOpacity }) {
 function LogoMesh({ color, shape, fillOpacity }) {
 
+    // color = 0xff0000;
+    fillOpacity = 0.5;
+
+
     //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
 
     // return (
@@ -79,12 +83,12 @@ function LogoMesh({ color, shape, fillOpacity }) {
         curveSegments: 7, 
         steps: 2, 
         depth: 50, 
-        bevelEnabled: false, 
-        // bevelEnabled: true, 
-        // bevelThickness: 30,
-        // bevelSize: 10, 
-        // bevelOffset: 0, 
-        // bevelSegments: 20, 
+        // bevelEnabled: false, 
+        bevelEnabled: true, 
+        bevelThickness: 10,
+        bevelSize: 10, 
+        bevelOffset: 0, 
+        bevelSegments: 20, 
         // extrudePath: [some THREE.Curve], 
         // UVGenerator: [some Oject]
     };
@@ -92,51 +96,51 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
     //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
-    // var zPos;
-    var zPos = 0;
+    // // var zPos;
+    // var zPos = 0;
 
-    if (color.r !== 1) {
-    // if (color !== 1) {
-    // if (color === 1) {
+    // if (color.r !== 1) {
+    // // if (color !== 1) {
+    // // if (color === 1) {
 
-        console.log('');
-        // console.log('color = ' + color);
-        console.log('color === 1 ' + color);
-        console.log(color);
-        // console.log('fillOpacity = ' + fillOpacity);
+    //     console.log('');
+    //     // console.log('color = ' + color);
+    //     console.log('color === 1 ' + color);
+    //     console.log(color);
+    //     // console.log('fillOpacity = ' + fillOpacity);
 
-        // zPos = 1;
-        // zPos = 0;
+    //     // zPos = 1;
+    //     // zPos = 0;
 
-        // thisBlend = THREE.NormalBlending;
-        // thisCull = THREE.CullFaceFrontBack;
+    //     // thisBlend = THREE.NormalBlending;
+    //     // thisCull = THREE.CullFaceFrontBack;
 
-    } else {
+    // } else {
 
-        console.log('');
-        // console.log('color = ' + color);
-        console.log('color !== 1 ' + color);
-        console.log(color);
-        // console.log('fillOpacity = ' + fillOpacity);
+    //     console.log('');
+    //     // console.log('color = ' + color);
+    //     console.log('color !== 1 ' + color);
+    //     console.log(color);
+    //     // console.log('fillOpacity = ' + fillOpacity);
 
-        // zPos = -1;
-        // zPos = 0;
+    //     // zPos = -1;
+    //     // zPos = 0;
 
-        // thisBlend = THREE.SubtractiveBlending;
-        // thisCull = THREE.CullFaceNone;
-    }
+    //     // thisBlend = THREE.SubtractiveBlending;
+    //     // thisCull = THREE.CullFaceNone;
+    // }
 
     //#endregion -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
+    //#endregion -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
+
 
     return (
-        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, zPos]}>
-            <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} opacity={fillOpacity} depthWrite={true} />
+        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
+            <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} />
             <extrudeBufferGeometry attach="geometry" args={[[shape], extrudeSettings]} />
         </mesh>
     )
-
-    //#endregion -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
 }
 
 //#endregion ==================== LOGOMESH - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
@@ -158,9 +162,7 @@ function LogoShape({ url }) {
         ), [paths]
     )
 
-    // const [center, setCenter] = useState([0, 0, 0])
     const center = [0, 2.5, 0]
-
     const logoGroupRef = useRef()
 
 
@@ -178,9 +180,9 @@ function LogoShape({ url }) {
 
     //#region -------------------- LOGO spin --------------------
 
-    useFrame(() => {
-        logoGroupRef.current.rotation.y += 0.025;
-    });
+    // useFrame(() => {
+    //     logoGroupRef.current.rotation.y += 0.025;
+    // });
 
     //#endregion -------------------- LOGO spin --------------------
 
@@ -198,11 +200,10 @@ function LogoShape({ url }) {
 
 
 
-// export default () => {
 export default function Logo() {
     return (
         <>
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_test02.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude.svg" />
         </>
     )
 }
