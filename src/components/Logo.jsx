@@ -6,7 +6,8 @@
 // import React, { Suspense, useState, useRef, useEffect, useMemo } from 'react';
 import React from 'react';
 // import { useState, useRef, useEffect, useMemo } from 'react';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+// import { useEffect } from 'react';
 import { useRef, useMemo } from 'react';
 
 import * as THREE from 'three';
@@ -84,7 +85,7 @@ function LogoMesh(props) {
     let extrudeSettings = {
         curveSegments: 7, 
         steps: 2, 
-        depth: 25, 
+        depth: 20, 
         // bevelEnabled: false, 
         bevelEnabled: true, 
         bevelThickness: 10,
@@ -147,7 +148,8 @@ function LogoMesh(props) {
 
 
     return (
-        <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
+        <mesh scale={[0.005, -0.005, 0.005]}>
+        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             {/* <meshStandardMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             <meshStandardMaterial attach="material" color={props.color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
@@ -185,7 +187,11 @@ function LogoShape(props) {
         ), [paths, props]
     )
 
-    const center = [0, 2.5, 0]
+    // const center = [0, 2.5, 0]
+    // const [center, setCenter] = useState([0, 0, 0])
+    const [center, setCenter] = useState([0, 0, 0])
+    // let center
+    // const thisRotation = [THREE.Math.degToRad(0), THREE.Math.degToRad(0), THREE.Math.degToRad(0)]
     const logoGroupRef = useRef()
 
 
@@ -194,16 +200,31 @@ function LogoShape(props) {
     // console.log(shapes);
 
 
-    //#region -------------------- LOGO flat --------------------
+    //#region -------------------- LOGO center --------------------
 
-    // useEffect(() => {
-    //     const box = new Box3().setFromObject(logoGroupRef.current)
-    //     const sphere = new Sphere()
-    //     box.getBoundingSphere(sphere)
-    //     setCenter([-sphere.center.x, -sphere.center.y, 0])
+    useEffect(() => {
+        const box = new THREE.Box3().setFromObject(logoGroupRef.current)
+        const sphere = new THREE.Sphere()
+        box.getBoundingSphere(sphere)
+        setCenter([-sphere.center.x, -sphere.center.y, 0])
+    }, [])
+
+    // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
+    // const box3 = new THREE.Box3();
+    // box3.setFromObject(logoGroupRef.current);
+
+    // const box3 = useMemo(() => {
+    //     new THREE.Box3().setFromObject(logoGroupRef.current)
     // }, [])
+    // const box3 = useMemo(() => new THREE.Box3().setFromObject(logoGroupRef.current), [])
 
-    //#endregion -------------------- LOGO flat --------------------
+
+    // const vector = new THREE.Vector3()
+    // box3.getCenter(vector)
+    // // logoGroupRef.current.position.set(-vector.x, -vector.y, -vector.z)
+    // let center = (-vector.x, -vector.y, -vector.z)
+
+    //#endregion -------------------- LOGO center --------------------
 
 
     //#region -------------------- LOGO spin --------------------
@@ -217,6 +238,7 @@ function LogoShape(props) {
 
     return (
         <group position={center} ref={logoGroupRef}>
+        {/* <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
             {shapes.map((props) => (
                 <LogoMesh key={props.shape.uuid} {...props} />
             ))}
