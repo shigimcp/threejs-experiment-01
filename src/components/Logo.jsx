@@ -54,12 +54,12 @@ import { useFrame } from 'react-three-fiber';
 // function LogoMesh({ color, shape, fillOpacity }) {
 function LogoMesh(props) {
 
-    console.log('');
-    console.log('==================== LogoMesh ====================');
-    // console.log('props = ' + props);
-    // console.log('props = ');
-    console.log(props);
-    // console.log(props.color);
+    // console.log('');
+    // console.log('==================== LogoMesh ====================');
+    // // console.log('props = ' + props);
+    // // console.log('props = ');
+    // console.log(props);
+    // // console.log(props.color);
 
 
     //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
@@ -119,21 +119,6 @@ function LogoMesh(props) {
         setCenter([-sphere.center.x, 0, 0])
     }, [])
 
-    // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
-    // const box3 = new THREE.Box3();
-    // box3.setFromObject(logoGroupRef.current);
-
-    // const box3 = useMemo(() => {
-    //     new THREE.Box3().setFromObject(logoGroupRef.current)
-    // }, [])
-    // const box3 = useMemo(() => new THREE.Box3().setFromObject(logoGroupRef.current), [])
-
-
-    // const vector = new THREE.Vector3()
-    // box3.getCenter(vector)
-    // // logoGroupRef.current.position.set(-vector.x, -vector.y, -vector.z)
-    // let center = (-vector.x, -vector.y, -vector.z)
-
     //#endregion -------------------- LOGO center --------------------
 
 
@@ -175,16 +160,12 @@ function LogoMesh(props) {
 
     //#endregion -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
+
     //#endregion -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
 
 
     return (
-        // <mesh scale={[0.005, -0.005, 0.005]}>
-        // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
         <mesh scale={[0.005, -0.005, 0.005]} position={center} ref={logoMeshRef}>
-        {/* <mesh scale={[0.005, -0.005, 0.005]} ref={logoMeshRef}> */}
-            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
-            {/* <meshStandardMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             <meshStandardMaterial attach="material" color={props.color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
@@ -242,21 +223,6 @@ function LogoShape(props) {
         setCenter([0, -sphere.center.y, 0])
     }, [])
 
-    // // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
-    // // const box3 = new THREE.Box3();
-    // // box3.setFromObject(logoGroupRef.current);
-
-    // // const box3 = useMemo(() => {
-    // //     new THREE.Box3().setFromObject(logoGroupRef.current)
-    // // }, [])
-    // // const box3 = useMemo(() => new THREE.Box3().setFromObject(logoGroupRef.current), [])
-
-
-    // // const vector = new THREE.Vector3()
-    // // box3.getCenter(vector)
-    // // // logoGroupRef.current.position.set(-vector.x, -vector.y, -vector.z)
-    // // let center = (-vector.x, -vector.y, -vector.z)
-
     // //#endregion -------------------- LOGO center --------------------
 
 
@@ -270,9 +236,7 @@ function LogoShape(props) {
 
 
     return (
-        // <group ref={logoGroupRef}>
         <group position={center} ref={logoGroupRef}>
-        {/* <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
             {shapes.map((props) => (
                 <LogoMesh key={props.shape.uuid} {...props} />
             ))}
