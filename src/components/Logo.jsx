@@ -115,7 +115,8 @@ function LogoMesh(props) {
         const box = new THREE.Box3().setFromObject(logoMeshRef.current)
         const sphere = new THREE.Sphere()
         box.getBoundingSphere(sphere)
-        setCenter([-sphere.center.x, -sphere.center.y, 0])
+        // setCenter([-sphere.center.x, -sphere.center.y, 0])
+        setCenter([-sphere.center.x, 0, 0])
     }, [])
 
     // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
@@ -181,6 +182,7 @@ function LogoMesh(props) {
         // <mesh scale={[0.005, -0.005, 0.005]}>
         // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
         <mesh scale={[0.005, -0.005, 0.005]} position={center} ref={logoMeshRef}>
+        {/* <mesh scale={[0.005, -0.005, 0.005]} ref={logoMeshRef}> */}
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             {/* <meshStandardMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             <meshStandardMaterial attach="material" color={props.color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
@@ -236,7 +238,8 @@ function LogoShape(props) {
         const box = new THREE.Box3().setFromObject(logoGroupRef.current)
         const sphere = new THREE.Sphere()
         box.getBoundingSphere(sphere)
-        setCenter([-sphere.center.x, -sphere.center.y, 0])
+        // setCenter([-sphere.center.x, -sphere.center.y, 0])
+        setCenter([0, -sphere.center.y, 0])
     }, [])
 
     // // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
@@ -267,8 +270,8 @@ function LogoShape(props) {
 
 
     return (
-        <group ref={logoGroupRef}>
-        {/* <group position={center} ref={logoGroupRef}> */}
+        // <group ref={logoGroupRef}>
+        <group position={center} ref={logoGroupRef}>
         {/* <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
             {shapes.map((props) => (
                 <LogoMesh key={props.shape.uuid} {...props} />
