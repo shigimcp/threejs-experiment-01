@@ -219,8 +219,7 @@ function LogoShape(props) {
     )
 
     // const center = [0, 2.5, 0]
-    // const [center, setCenter] = useState([0, 0, 0])
-    // const [center, setCenter] = useState([0, 0, 0])
+    const [center, setCenter] = useState([0, 0, 0])
     // let center
     // const thisRotation = [THREE.Math.degToRad(0), THREE.Math.degToRad(0), THREE.Math.degToRad(0)]
     const logoGroupRef = useRef()
@@ -233,12 +232,12 @@ function LogoShape(props) {
 
     // //#region -------------------- LOGO center --------------------
 
-    // useEffect(() => {
-    //     const box = new THREE.Box3().setFromObject(logoGroupRef.current)
-    //     const sphere = new THREE.Sphere()
-    //     box.getBoundingSphere(sphere)
-    //     setCenter([-sphere.center.x, -sphere.center.y, 0])
-    // }, [])
+    useEffect(() => {
+        const box = new THREE.Box3().setFromObject(logoGroupRef.current)
+        const sphere = new THREE.Sphere()
+        box.getBoundingSphere(sphere)
+        setCenter([-sphere.center.x, -sphere.center.y, 0])
+    }, [])
 
     // // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
     // // const box3 = new THREE.Box3();
@@ -269,8 +268,8 @@ function LogoShape(props) {
 
     return (
         <group ref={logoGroupRef}>
-        {/* <group position={center} ref={logoGroupRef}>
-        <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
+        {/* <group position={center} ref={logoGroupRef}> */}
+        {/* <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
             {shapes.map((props) => (
                 <LogoMesh key={props.shape.uuid} {...props} />
             ))}
