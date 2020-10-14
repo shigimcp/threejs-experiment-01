@@ -19,7 +19,7 @@ import * as THREE from 'three';
 // import { extend, useLoader } from 'react-three-fiber';
 import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
-// import { useFrame } from 'react-three-fiber';
+import { useFrame } from 'react-three-fiber';
 
 // import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
 // extend({ MapControls });
@@ -50,10 +50,15 @@ import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
 // function LogoMesh({ color, shape, fillOpacity }) {
 // function LogoMesh({ color, depthNum, shape, fillOpacity, strokeColor }) {
 // function LogoMesh({ color, depthNum, shape, fillOpacity }) {
-function LogoMesh({ color, shape, fillOpacity }) {
+// function LogoMesh({ color, shape, fillOpacity }) {
+function LogoMesh(props) {
 
-    // color = 0xff0000;
-    fillOpacity = 0.5;
+    console.log('');
+    console.log('==================== LogoMesh ====================');
+    // console.log('props = ' + props);
+    // console.log('props = ');
+    console.log(props);
+    // console.log(props.color);
 
 
     //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
@@ -71,18 +76,15 @@ function LogoMesh({ color, shape, fillOpacity }) {
     //#region -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
     //        -------------------- PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
-    // var extrudeSettings;
-    // var zPos;
-    // var depthNum = 50;
-    // depthNum = 5;
-    // var thisBlend;
-    // var thisCull;
+    // // console.log('');
+    // console.log('-------------------- LogoMesh: EXTRUDE --------------------');
+    // console.log('props.extrudeDir = ' + props.extrudeDir);
 
 
-    var extrudeSettings = {
+    let extrudeSettings = {
         curveSegments: 7, 
         steps: 2, 
-        depth: 50, 
+        depth: 25, 
         // bevelEnabled: false, 
         bevelEnabled: true, 
         bevelThickness: 10,
@@ -93,11 +95,20 @@ function LogoMesh({ color, shape, fillOpacity }) {
         // UVGenerator: [some Oject]
     };
 
+    // console.log('extrudeSettings = ' + extrudeSettings);
+    // console.log(extrudeSettings);
+
+    if (props.extrudeDir === 'negative') {
+        extrudeSettings.depth = extrudeSettings.depth * -1;
+    }
+
+    // console.log(extrudeSettings);
+
 
     //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
-    // // var zPos;
-    // var zPos = 0;
+    // // let zPos;
+    // let zPos = 0;
 
     // if (color.r !== 1) {
     // // if (color !== 1) {
@@ -137,8 +148,10 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
     return (
         <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
-            <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} />
-            <extrudeBufferGeometry attach="geometry" args={[[shape], extrudeSettings]} />
+            {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
+            {/* <meshStandardMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
+            <meshStandardMaterial attach="material" color={props.color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
+            <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     )
 }
@@ -147,23 +160,38 @@ function LogoMesh({ color, shape, fillOpacity }) {
 
 
 
-//#region ==================== LOGOSHAPE - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+//#region ==================== LOGOSHAPE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
-function LogoShape({ url }) {
 // function LogoShape({ url, depthNum, color, shape, fillOpacity, strokeColor }) {
+// function LogoShape({ url }) {
+function LogoShape(props) {
 
-    const { paths } = useLoader(SVGLoader, url)
+    // console.log('');
+    // console.log('==================== LogoShape ====================');
+    // console.log(props);
+
+
+    // const { paths } = useLoader(SVGLoader, url)
+    const { paths } = useLoader(SVGLoader, props.url)
 
     const shapes = useMemo(() => 
         paths.flatMap((thisPath, i) => 
             thisPath.toShapes(true).map((shape) => 
-                ({ shape, color: thisPath.color, fillOpacity: thisPath.userData.style.fillOpacity })
+                // ({ shape, color: thisPath.color, fillOpacity: thisPath.userData.style.fillOpacity })
+                // ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity })
+                ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir })
             )
-        ), [paths]
+        // ), [paths]
+        ), [paths, props]
     )
 
     const center = [0, 2.5, 0]
     const logoGroupRef = useRef()
+
+
+    // // console.log('shapes = ' + shapes);
+    // console.log('shapes = ');
+    // console.log(shapes);
 
 
     //#region -------------------- LOGO flat --------------------
@@ -180,9 +208,9 @@ function LogoShape({ url }) {
 
     //#region -------------------- LOGO spin --------------------
 
-    // useFrame(() => {
-    //     logoGroupRef.current.rotation.y += 0.025;
-    // });
+    useFrame(() => {
+        logoGroupRef.current.rotation.y += 0.025;
+    });
 
     //#endregion -------------------- LOGO spin --------------------
 
@@ -196,14 +224,15 @@ function LogoShape({ url }) {
     )
 }
 
-//#endregion ==================== LOGOSHAPE - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+//#endregion ==================== LOGOSHAPE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 
 
 export default function Logo() {
     return (
         <>
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude.svg" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude.svg" fillOpacity="0.5" extrudeDir="positive" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude.svg" fillOpacity="0.5" extrudeDir="negative" />
         </>
     )
 }
