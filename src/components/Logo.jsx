@@ -54,12 +54,12 @@ import { useFrame } from 'react-three-fiber';
 // function LogoMesh({ color, shape, fillOpacity }) {
 function LogoMesh(props) {
 
-    // console.log('');
-    // console.log('==================== LogoMesh ====================');
-    // // console.log('props = ' + props);
-    // // console.log('props = ');
-    // console.log(props);
-    // // console.log(props.color);
+    console.log('');
+    console.log('==================== LogoMesh ====================');
+    // console.log('props = ' + props);
+    // console.log('props = ');
+    console.log(props);
+    // console.log(props.color);
 
 
     //#region -------------------- LOGOMESH REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
@@ -116,12 +116,25 @@ function LogoMesh(props) {
         const sphere = new THREE.Sphere()
         box.getBoundingSphere(sphere)
 
-        if (!logoMeshRef.current.material.color.r) {
+        if (logoMeshRef.current.material.color.r) {
+            console.log(logoMeshRef.current.material.color)
+
+            // setCenter([-sphere.center.x * 1.235, 0, 0])
+            setCenter([-sphere.center.x * 0.809716599190283, 0, 0])
+
+        } else if (logoMeshRef.current.material.color.g) {
+            console.log(logoMeshRef.current.material.color)
+
+            // setCenter([-sphere.center.x * 1.252313, 0, 0])
+            setCenter([-sphere.center.x * 0.798522414124903, 0, 0])
+
+        } else {
             console.log(logoMeshRef.current.material.color)
 
             // setCenter([-sphere.center.x, -sphere.center.y, 0])
             setCenter([-sphere.center.x, 0, 0])
         }
+
     }, [])
 
     //#endregion -------------------- LOGOMESH center --------------------
@@ -168,10 +181,13 @@ function LogoMesh(props) {
 
     //#endregion -------------------- LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
 
+    // const meshColor = [0, 0, 0];
 
     return (
         <mesh scale={[0.005, -0.005, 0.005]} position={center} ref={logoMeshRef}>
             <meshStandardMaterial attach="material" color={props.color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
+            {/* <meshStandardMaterial attach="material" color={meshColor} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshStandardMaterial attach="material" color={[0, 0, 0]} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     )
@@ -194,6 +210,8 @@ function LogoShape(props) {
 
     //#region -------------------- LOGOSHAPE shapes --------------------
 
+    // const shapeColor = [0, 0, 0];
+
     // const { paths } = useLoader(SVGLoader, url)
     const { paths } = useLoader(SVGLoader, props.url)
 
@@ -203,9 +221,11 @@ function LogoShape(props) {
                 // ({ shape, color: thisPath.color, fillOpacity: thisPath.userData.style.fillOpacity })
                 // ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity })
                 ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir })
+                // ({ shape, color: shapeColor, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir })
             )
         // ), [paths]
         ), [paths, props]
+        // ), [paths, props, shapeColor]
     )
 
     // // console.log('shapes = ' + shapes);
