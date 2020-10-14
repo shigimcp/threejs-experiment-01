@@ -106,6 +106,36 @@ function LogoMesh(props) {
     // console.log(extrudeSettings);
 
 
+    //#region -------------------- LOGO center --------------------
+
+    const logoMeshRef = useRef()
+    const [center, setCenter] = useState([0, 0, 0])
+
+    useEffect(() => {
+        const box = new THREE.Box3().setFromObject(logoMeshRef.current)
+        const sphere = new THREE.Sphere()
+        box.getBoundingSphere(sphere)
+        setCenter([-sphere.center.x, -sphere.center.y, 0])
+    }, [])
+
+    // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
+    // const box3 = new THREE.Box3();
+    // box3.setFromObject(logoGroupRef.current);
+
+    // const box3 = useMemo(() => {
+    //     new THREE.Box3().setFromObject(logoGroupRef.current)
+    // }, [])
+    // const box3 = useMemo(() => new THREE.Box3().setFromObject(logoGroupRef.current), [])
+
+
+    // const vector = new THREE.Vector3()
+    // box3.getCenter(vector)
+    // // logoGroupRef.current.position.set(-vector.x, -vector.y, -vector.z)
+    // let center = (-vector.x, -vector.y, -vector.z)
+
+    //#endregion -------------------- LOGO center --------------------
+
+
     //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
     // // let zPos;
@@ -148,8 +178,9 @@ function LogoMesh(props) {
 
 
     return (
-        <mesh scale={[0.005, -0.005, 0.005]}>
-        {/* <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}> */}
+        // <mesh scale={[0.005, -0.005, 0.005]}>
+        // <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
+        <mesh scale={[0.005, -0.005, 0.005]} position={center} ref={logoMeshRef}>
             {/* <meshPhongMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             {/* <meshStandardMaterial attach="material" color={color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={fillOpacity} /> */}
             <meshStandardMaterial attach="material" color={props.color} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
@@ -189,7 +220,7 @@ function LogoShape(props) {
 
     // const center = [0, 2.5, 0]
     // const [center, setCenter] = useState([0, 0, 0])
-    const [center, setCenter] = useState([0, 0, 0])
+    // const [center, setCenter] = useState([0, 0, 0])
     // let center
     // const thisRotation = [THREE.Math.degToRad(0), THREE.Math.degToRad(0), THREE.Math.degToRad(0)]
     const logoGroupRef = useRef()
@@ -200,31 +231,31 @@ function LogoShape(props) {
     // console.log(shapes);
 
 
-    //#region -------------------- LOGO center --------------------
+    // //#region -------------------- LOGO center --------------------
 
-    useEffect(() => {
-        const box = new THREE.Box3().setFromObject(logoGroupRef.current)
-        const sphere = new THREE.Sphere()
-        box.getBoundingSphere(sphere)
-        setCenter([-sphere.center.x, -sphere.center.y, 0])
-    }, [])
-
-    // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
-    // const box3 = new THREE.Box3();
-    // box3.setFromObject(logoGroupRef.current);
-
-    // const box3 = useMemo(() => {
-    //     new THREE.Box3().setFromObject(logoGroupRef.current)
+    // useEffect(() => {
+    //     const box = new THREE.Box3().setFromObject(logoGroupRef.current)
+    //     const sphere = new THREE.Sphere()
+    //     box.getBoundingSphere(sphere)
+    //     setCenter([-sphere.center.x, -sphere.center.y, 0])
     // }, [])
-    // const box3 = useMemo(() => new THREE.Box3().setFromObject(logoGroupRef.current), [])
+
+    // // const box3 = new THREE.Box3().setFromObject(logoGroupRef.current);
+    // // const box3 = new THREE.Box3();
+    // // box3.setFromObject(logoGroupRef.current);
+
+    // // const box3 = useMemo(() => {
+    // //     new THREE.Box3().setFromObject(logoGroupRef.current)
+    // // }, [])
+    // // const box3 = useMemo(() => new THREE.Box3().setFromObject(logoGroupRef.current), [])
 
 
-    // const vector = new THREE.Vector3()
-    // box3.getCenter(vector)
-    // // logoGroupRef.current.position.set(-vector.x, -vector.y, -vector.z)
-    // let center = (-vector.x, -vector.y, -vector.z)
+    // // const vector = new THREE.Vector3()
+    // // box3.getCenter(vector)
+    // // // logoGroupRef.current.position.set(-vector.x, -vector.y, -vector.z)
+    // // let center = (-vector.x, -vector.y, -vector.z)
 
-    //#endregion -------------------- LOGO center --------------------
+    // //#endregion -------------------- LOGO center --------------------
 
 
     //#region -------------------- LOGO spin --------------------
@@ -237,8 +268,9 @@ function LogoShape(props) {
 
 
     return (
-        <group position={center} ref={logoGroupRef}>
-        {/* <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
+        <group ref={logoGroupRef}>
+        {/* <group position={center} ref={logoGroupRef}>
+        <group position={center} ref={logoGroupRef} rotation={thisRotation}> */}
             {shapes.map((props) => (
                 <LogoMesh key={props.shape.uuid} {...props} />
             ))}
