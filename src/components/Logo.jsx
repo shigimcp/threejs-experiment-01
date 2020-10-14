@@ -228,9 +228,9 @@ function LogoShape(props) {
 
     //#region -------------------- LOGO spin --------------------
 
-    useFrame(() => {
-        logoGroupRef.current.rotation.y += 0.025;
-    });
+    // useFrame(() => {
+    //     logoGroupRef.current.rotation.y += 0.025;
+    // });
 
     //#endregion -------------------- LOGO spin --------------------
 
