@@ -62,7 +62,7 @@ function LogoMesh(props) {
     // // console.log(props.color);
 
 
-    //#region -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
+    //#region -------------------- LOGOMESH REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
 
     // return (
     //     <mesh scale={[0.005, -0.005, 0.005]} position={[-2.5, 0, 0]}>
@@ -74,11 +74,11 @@ function LogoMesh(props) {
     //#endregion -------------------- REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 --------------------
 
 
-    //#region -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
-    //        -------------------- PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
+    //#region -------------------- LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
+    //        -------------------- LOGOMESH: EXTRUDE PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
     // // console.log('');
-    // console.log('-------------------- LogoMesh: EXTRUDE --------------------');
+    // console.log('-------------------- LOGOMESH: EXTRUDE --------------------');
     // console.log('props.extrudeDir = ' + props.extrudeDir);
 
 
@@ -106,7 +106,7 @@ function LogoMesh(props) {
     // console.log(extrudeSettings);
 
 
-    //#region -------------------- LOGO center --------------------
+    //#region -------------------- LOGOMESH center --------------------
 
     const logoMeshRef = useRef()
     const [center, setCenter] = useState([0, 0, 0])
@@ -124,10 +124,10 @@ function LogoMesh(props) {
         }
     }, [])
 
-    //#endregion -------------------- LOGO center --------------------
+    //#endregion -------------------- LOGOMESH center --------------------
 
 
-    //#region -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
+    //#region -------------------- LOGOMESH: Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
     // // let zPos;
     // let zPos = 0;
@@ -163,10 +163,10 @@ function LogoMesh(props) {
     //     // thisCull = THREE.CullFaceNone;
     // }
 
-    //#endregion -------------------- Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
+    //#endregion -------------------- LOGOMESH: Checks if black or white. Should be made more dynamic ultimately... doesn't seem to work (see console messages) --------------------
 
 
-    //#endregion -------------------- EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
+    //#endregion -------------------- LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
 
 
     return (
@@ -192,6 +192,8 @@ function LogoShape(props) {
     // console.log(props);
 
 
+    //#region -------------------- LOGOSHAPE shapes --------------------
+
     // const { paths } = useLoader(SVGLoader, url)
     const { paths } = useLoader(SVGLoader, props.url)
 
@@ -206,19 +208,19 @@ function LogoShape(props) {
         ), [paths, props]
     )
 
-    // const center = [0, 2.5, 0]
-    const [center, setCenter] = useState([0, 0, 0])
-    // let center
-    // const thisRotation = [THREE.Math.degToRad(0), THREE.Math.degToRad(0), THREE.Math.degToRad(0)]
-    const logoGroupRef = useRef()
-
-
     // // console.log('shapes = ' + shapes);
     // console.log('shapes = ');
     // console.log(shapes);
 
+    //#endregion -------------------- LOGOSHAPE shapes --------------------
 
-    // //#region -------------------- LOGO center --------------------
+
+    //#region -------------------- LOGOSHAPE center --------------------
+
+    const [center, setCenter] = useState([0, 0, 0])
+    // const thisRotation = [THREE.Math.degToRad(0), THREE.Math.degToRad(0), THREE.Math.degToRad(0)]
+
+    const logoGroupRef = useRef()
 
     useEffect(() => {
         const box = new THREE.Box3().setFromObject(logoGroupRef.current)
@@ -228,16 +230,16 @@ function LogoShape(props) {
         setCenter([0, -sphere.center.y, 0])
     }, [])
 
-    // //#endregion -------------------- LOGO center --------------------
+    //#endregion -------------------- LOGOSHAPE center --------------------
 
 
-    //#region -------------------- LOGO spin --------------------
+    //#region -------------------- LOGOSHAPE spin --------------------
 
-    // useFrame(() => {
-    //     logoGroupRef.current.rotation.y += 0.025;
-    // });
+    useFrame(() => {
+        logoGroupRef.current.rotation.y += 0.025;
+    });
 
-    //#endregion -------------------- LOGO spin --------------------
+    //#endregion -------------------- LOGOSHAPE spin --------------------
 
 
     return (
