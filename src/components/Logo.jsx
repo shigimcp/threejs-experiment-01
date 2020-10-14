@@ -115,8 +115,13 @@ function LogoMesh(props) {
         const box = new THREE.Box3().setFromObject(logoMeshRef.current)
         const sphere = new THREE.Sphere()
         box.getBoundingSphere(sphere)
-        // setCenter([-sphere.center.x, -sphere.center.y, 0])
-        setCenter([-sphere.center.x, 0, 0])
+
+        if (!logoMeshRef.current.material.color.r) {
+            console.log(logoMeshRef.current.material.color)
+
+            // setCenter([-sphere.center.x, -sphere.center.y, 0])
+            setCenter([-sphere.center.x, 0, 0])
+        }
     }, [])
 
     //#endregion -------------------- LOGO center --------------------
