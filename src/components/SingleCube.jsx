@@ -1,14 +1,15 @@
-import React, {
-    useMemo,
-    useRef,
-    useState,
-    useEffect,
-    useCallback
-} from "react";
+//#region ==================== IMPORTS ====================
+
+import React, { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import { random } from "lodash";
 import { useFrame } from "react-three-fiber";
+import { DoubleSide } from "three";
+
+//#endregion ==================== IMPORTS ====================
+
 
 export default () => {
+
     const meshRef = useRef();
     const timeRef = useRef(0);
 
@@ -17,7 +18,11 @@ export default () => {
 
     const isActiveRef = useRef(isActive);
 
-    // position
+
+    //#region ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
+    //        ==================== REF: https://codesandbox.io/s/alligatordemoreact-three-fiber-forked-ic94p ====================
+
+    // -------------------- position --------------------
 
     const orbitRadius = 3;
 
@@ -28,28 +33,39 @@ export default () => {
         return [random(-orbitRadius, orbitRadius, true), 0, random(-orbitRadius, orbitRadius, true)];
     }, []);
 
-    // random time mod factor
+
+    // -------------------- random time mod factor --------------------
+
     const timeModMemo = useMemo(() => random(0.1, 4, true), []);
 
-    // color
+
+    // -------------------- hover color --------------------
+
     // const color = isHovered ? 0xe5d54d : (isActive ? 0xf7e7e5 : 0xf95b3c);
     const color = isHovered ? 0x666666 : (isActive ? 0x000000 : 0xdddddd);
 
-    //useEffect of the activeState
+
+    // -------------------- useEffect of the activeState --------------------
+
     useEffect(() => {
         isActiveRef.current = isActive;
     }, [isActive]);
 
-    // raf loop
+
+    // -------------------- raf loop --------------------
+
     useFrame(() => {
         meshRef.current.rotation.y += 0.01 * timeModMemo;
+
         if (isActiveRef.current) {
             timeRef.current += 0.03;
             meshRef.current.position.y = position[1] + Math.sin(timeRef.current) * 0.4;
         }
     });
 
-    // Events
+
+    // -------------------- Events --------------------
+
     const onHover = useCallback(
         (e, value) => {
             e.stopPropagation();
@@ -66,21 +82,13 @@ export default () => {
         [setIsActive]
     );
 
+    //#endregion ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
+
+
     return (
-        <mesh
-            ref={meshRef}
-            position={position}
-            onClick={e => onClick(e)}
-            onPointerOver={e => onHover(e, true)}
-            onPointerOut={e => onHover(e, false)}
-        >
+        <mesh ref={meshRef} position={position} onClick={e => onClick(e)} onPointerOver={e => onHover(e, true)} onPointerOut={e => onHover(e, false)}>
             <boxBufferGeometry attach="geometry" args={[0.005, 0.75, 1]} />
-            <meshStandardMaterial
-                attach="material"
-                color={color}
-                roughness={0.6}
-                metalness={0.1}
-            />
+            <meshStandardMaterial attach="material" color={color} roughness={0.6} side={DoubleSide} metalness={0.4} />
         </mesh>
     );
 };

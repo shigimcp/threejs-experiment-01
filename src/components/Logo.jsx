@@ -4,7 +4,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRef, useMemo } from 'react';
 
-import * as THREE from 'three';
+// import * as THREE from 'three';
+import { DoubleSide } from "three";
+import { Box3, Sphere } from "three";
+
 import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
 import { useFrame } from 'react-three-fiber';
@@ -13,14 +16,11 @@ import { useFrame } from 'react-three-fiber';
 
 
 
-//#region ==================== LOGOMESH - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+//#region ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 function LogoMesh(props) {
 
-    //#region -------------------- LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
-    //        -------------------- LOGOMESH: EXTRUDE PARAMETERS - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
-
-    //#region -------------------- LOGOMESH extrudeSettings --------------------
+    //#region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
     let extrudeSettings = {
         curveSegments: 7, 
@@ -37,8 +37,7 @@ function LogoMesh(props) {
         extrudeSettings.depth = extrudeSettings.depth * -1;
     }
 
-    //#endregion -------------------- LOGOMESH extrudeSettings --------------------
-
+    //#endregion -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
 
     //#region -------------------- LOGOMESH center --------------------
@@ -48,8 +47,10 @@ function LogoMesh(props) {
 
     
     useEffect(() => {
-        const box = new THREE.Box3().setFromObject(logoMeshRef.current)
-        const sphere = new THREE.Sphere()
+        // const box = new THREE.Box3().setFromObject(logoMeshRef.current)
+        // const sphere = new THREE.Sphere()
+        const box = new Box3().setFromObject(logoMeshRef.current)
+        const sphere = new Sphere()
         box.getBoundingSphere(sphere)
 
 
@@ -127,23 +128,22 @@ function LogoMesh(props) {
 
     //#endregion -------------------- LOGOMESH center --------------------
 
-    //#endregion -------------------- LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f --------------------
-
+    
     const meshColor = [0, 0, 0];
 
     return (
         <mesh id={props.id} scale={[0.005, -0.005, 0.005]} position={center} ref={logoMeshRef}>
-            <meshStandardMaterial attach="material" color={meshColor} side={THREE.DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
+            <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     )
 }
 
-//#endregion ==================== LOGOMESH - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+//#endregion ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 
 
-//#region ==================== LOGOSHAPE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
+//#region ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
 function LogoShape(props) {
 
@@ -162,7 +162,6 @@ function LogoShape(props) {
     //#endregion -------------------- LOGOSHAPE shapes --------------------
 
 
-
     //#region -------------------- LOGOSHAPE center --------------------
 
     const [center, setCenter] = useState([0, 0, 0])
@@ -170,14 +169,15 @@ function LogoShape(props) {
     const logoGroupRef = useRef()
 
     useEffect(() => {
-        const box = new THREE.Box3().setFromObject(logoGroupRef.current)
-        const sphere = new THREE.Sphere()
+        // const box = new THREE.Box3().setFromObject(logoGroupRef.current)
+        // const sphere = new THREE.Sphere()
+        const box = new Box3().setFromObject(logoGroupRef.current)
+        const sphere = new Sphere()
         box.getBoundingSphere(sphere)
         setCenter([0, -sphere.center.y, 0])
     }, [])
 
     //#endregion -------------------- LOGOSHAPE center --------------------
-
 
 
     //#region -------------------- LOGOSHAPE spin --------------------
@@ -198,7 +198,7 @@ function LogoShape(props) {
     )
 }
 
-//#endregion ==================== LOGOSHAPE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
+//#endregion ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
 
 
