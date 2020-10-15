@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { Canvas } from "react-three-fiber";
 import Scene from "./components/Scene";
 import Lights from "./components/Lights";
+import Camera from "./components/Camera"
 
 import Logo from "./components/Logo";
 import Cubes from "./components/Cubes";
@@ -19,6 +20,7 @@ export default function Home() {
                     <Logo />
                     <Cubes />
                     <Lights />
+                    <Camera />
                     <Scene />
                 </Suspense>
             </Canvas>

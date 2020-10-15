@@ -16,9 +16,85 @@ import { useFrame } from 'react-three-fiber';
 
 
 
+//#region ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+
+function LogoShape(props) {
+
+    //#region -------------------- LOGOSHAPE shapes --------------------
+
+    // console.log('');
+    // console.log('-------------------- LOGOSHAPE shapes --------------------');
+    // console.log(props);
+
+
+    const { paths } = useLoader(SVGLoader, props.url)
+
+    const shapes = useMemo(() =>
+        paths.flatMap((thisPath, i) =>
+            thisPath.toShapes(true).map((shape) =>
+                // ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir, nodeID: thisPath.userData.node.id })
+                ({ shape, color: props.fillColor, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir, nodeID: thisPath.userData.node.id })
+            )
+            // ), []
+        ), [paths, props]
+    )
+
+
+    // console.log('paths:');
+    // console.log(paths);
+
+    // console.log('shapes:');
+    // console.log(shapes);
+
+    //#endregion -------------------- LOGOSHAPE shapes --------------------
+
+
+    //#region -------------------- LOGOSHAPE center --------------------
+
+    const [center, setCenter] = useState([0, 0, 0])
+
+    const logoGroupRef = useRef()
+
+    useEffect(() => {
+        // const box = new THREE.Box3().setFromObject(logoGroupRef.current)
+        // const sphere = new THREE.Sphere()
+        const box = new Box3().setFromObject(logoGroupRef.current)
+        const sphere = new Sphere()
+        box.getBoundingSphere(sphere)
+        setCenter([0, -sphere.center.y, 0])
+    }, [])
+
+    //#endregion -------------------- LOGOSHAPE center --------------------
+
+
+    //#region -------------------- LOGOSHAPE spin --------------------
+
+    useFrame(() => {
+        logoGroupRef.current.rotation.y += 0.025;
+    });
+
+    //#endregion -------------------- LOGOSHAPE spin --------------------
+
+
+    return (
+        <group position={center} ref={logoGroupRef}>
+            {shapes.map((props) => (
+                <LogoMesh key={props.shape.uuid} {...props} />
+            ))}
+        </group>
+    )
+}
+
+//#endregion ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+
+
+
 //#region ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 function LogoMesh(props) {
+
+    // console.log('==================== LOGOMESH ====================');
+    // console.log(props);
 
     //#region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
@@ -26,7 +102,8 @@ function LogoMesh(props) {
         curveSegments: 7, 
         steps: 2, 
         depth: 15, 
-        bevelEnabled: true, 
+        // bevelEnabled: true, 
+        bevelEnabled: false, 
         bevelThickness: 10,
         bevelSize: 10, 
         bevelOffset: 0, 
@@ -129,11 +206,15 @@ function LogoMesh(props) {
     //#endregion -------------------- LOGOMESH center --------------------
 
     
-    const meshColor = [0, 0, 0];
+    const meshScaleFactor = 0.005;
+    // const meshColor = "#000000";
+    // const meshColor = "#ff0000";
 
     return (
-        <mesh id={props.id} scale={[0.005, -0.005, 0.005]} position={center} ref={logoMeshRef}>
-            <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} />
+        <mesh id={props.id} scale={[meshScaleFactor, -meshScaleFactor, meshScaleFactor]} position={center} ref={logoMeshRef}>
+            {/* <meshStandardMaterial attach="material" color={props.color} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            <meshStandardMaterial attach="material" color={props.color} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} metalness="0.4" />
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     )
@@ -143,70 +224,13 @@ function LogoMesh(props) {
 
 
 
-//#region ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
-
-function LogoShape(props) {
-
-    //#region -------------------- LOGOSHAPE shapes --------------------
-
-    const { paths } = useLoader(SVGLoader, props.url)
-
-    const shapes = useMemo(() => 
-        paths.flatMap((thisPath, i) => 
-            thisPath.toShapes(true).map((shape) => 
-                ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir, nodeID: thisPath.userData.node.id })
-            )
-        ), [paths, props]
-    )
-
-    //#endregion -------------------- LOGOSHAPE shapes --------------------
-
-
-    //#region -------------------- LOGOSHAPE center --------------------
-
-    const [center, setCenter] = useState([0, 0, 0])
-
-    const logoGroupRef = useRef()
-
-    useEffect(() => {
-        // const box = new THREE.Box3().setFromObject(logoGroupRef.current)
-        // const sphere = new THREE.Sphere()
-        const box = new Box3().setFromObject(logoGroupRef.current)
-        const sphere = new Sphere()
-        box.getBoundingSphere(sphere)
-        setCenter([0, -sphere.center.y, 0])
-    }, [])
-
-    //#endregion -------------------- LOGOSHAPE center --------------------
-
-
-    //#region -------------------- LOGOSHAPE spin --------------------
-
-    useFrame(() => {
-        logoGroupRef.current.rotation.y += 0.025;
-    });
-
-    //#endregion -------------------- LOGOSHAPE spin --------------------
-
-
-    return (
-        <group position={center} ref={logoGroupRef}>
-            {shapes.map((props) => (
-                <LogoMesh key={props.shape.uuid} {...props} />
-            ))}
-        </group>
-    )
-}
-
-//#endregion ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
-
-
-
 export default function Logo() {
     return (
         <>
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="positive" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="negative" />
+            {/* <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="positive" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="negative" /> */}
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillColor="#ff0000" fillOpacity="1" extrudeDir="positive" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillColor="#0000ff" fillOpacity="1" extrudeDir="negative" />
         </>
     )
 }

@@ -17,6 +17,8 @@ code {
 /* #endregion ==================== create-react-app ==================== */
 
 
+/* #region ==================== GENERAL ==================== */
+
 * {
   box-sizing: border-box;
 }
@@ -154,3 +156,17 @@ canvas {
         opacity: 0.5;
     }
 }
+
+/* #endregion ==================== GENERAL ==================== */
+
+
+/* #region ==================== SCENE ==================== */
+
+.backdrop {
+    border: 01px solid #ff0000;
+    background: #ff0000;
+    font-size: 20em;
+    width: 100%;
+}
+
+/* #endregion ==================== SCENE ==================== */
