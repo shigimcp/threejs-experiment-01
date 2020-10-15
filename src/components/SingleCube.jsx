@@ -18,9 +18,14 @@ export default () => {
     const isActiveRef = useRef(isActive);
 
     // position
+
+    const orbitRadius = 3;
+
     const position = useMemo(() => {
         // return [random(-3, 3, true), random(-3, 3, true), random(-3, 3, true)];
-        return [random(-1.5, 1.5, true), random(-1.5, 1.5, true), random(-1.5, 1.5, true)];
+        // return [random(-1.5, 1.5, true), random(-1.5, 1.5, true), random(-1.5, 1.5, true)];
+        // return [random(-orbitRadius, orbitRadius, true), random(-orbitRadius, orbitRadius, true), random(-orbitRadius, orbitRadius, true)];
+        return [random(-orbitRadius, orbitRadius, true), 0, random(-orbitRadius, orbitRadius, true)];
     }, []);
 
     // random time mod factor

@@ -6,8 +6,8 @@ import { Canvas } from "react-three-fiber";
 import Scene from "./components/Scene";
 import Lights from "./components/Lights";
 
-import Cubes from "./components/Cubes";
 import Logo from "./components/Logo";
+import Cubes from "./components/Cubes";
 
 // import "./styles.css";
 
