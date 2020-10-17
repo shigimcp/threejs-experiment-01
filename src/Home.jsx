@@ -15,12 +15,12 @@ import Cubes from "./components/Cubes";
 export default function Home() {
     return (
         <>
-            <Canvas>
+            <Canvas shadowMap>
                 <Suspense fallback={null}>
                     <Logo />
                     <Cubes />
                     <Lights />
-                    <Camera />
+                    <Camera position={[0, 0, 6.25]} fov={50} />
                     <Scene />
                 </Suspense>
             </Canvas>

@@ -8,36 +8,9 @@ import React from "react";
 
 export default () => {
 
-    //#region ==================== FakeSphere ====================
-
-    // const FakeSphere = () => {
-    //     return (
-    //         <mesh>
-    //             <sphereBufferGeometry args={[10, 30, 30]} attach="geometry" />
-    //             <meshBasicMaterial color={0x999999} attach="material" />
-    //         </mesh>
-    //     );
-    // };
-
-    //#endregion ==================== FakeSphere ====================
-
-
     //#region ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
-    // function Light({ brightness, color }) {
-    //     return (
-    //         <rectAreaLight
-    //             width={3}
-    //             height={3}
-    //             color={color}
-    //             intensity={brightness}
-    //             position={[-2, 0, 5]}
-    //             lookAt={[0, 0, 0]}
-    //             penumbra={1}
-    //             castShadow
-    //         />
-    //     );
-    // }
+    //#region -------------------- LIGHTS: KeyLight --------------------
 
     function KeyLight({ brightness, color }) {
         return (
@@ -54,6 +27,11 @@ export default () => {
         );
     }
 
+    //#endregion -------------------- LIGHTS: KeyLight --------------------
+
+
+    //#region -------------------- LIGHTS: FillLight --------------------
+
     function FillLight({ brightness, color }) {
         return (
             <rectAreaLight
@@ -69,6 +47,11 @@ export default () => {
         );
     }
 
+    //#endregion -------------------- LIGHTS: FillLight --------------------
+
+
+    //#region -------------------- LIGHTS: RimLight --------------------
+
     function RimLight({ brightness, color }) {
         return (
             <rectAreaLight
@@ -83,19 +66,40 @@ export default () => {
         );
     }
 
+    //#endregion -------------------- LIGHTS: RimLight --------------------
+
+
+    //#region -------------------- LIGHTS: ShadowLight --------------------
+
+    function ShadowLight() {
+        return (
+            <directionalLight
+                castShadow
+                position={[2.5, 0, 5]}
+                intensity={0.05}
+                shadow-mapSize-width={1024}
+                shadow-mapSize-height={1024}
+                shadow-camera-near={0.1}
+                shadow-camera-far={50}
+                shadow-camera-left={-10}
+                shadow-camera-right={10}
+                shadow-camera-top={10}
+                shadow-camera-bottom={-10}
+            />
+        );
+    }
+
+    //#endregion -------------------- LIGHTS: ShadowLight --------------------
+
     //#endregion ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
 
     return (
         <group>
-            {/* <FakeSphere /> */}
-            {/* <ambientLight intensity={0.9} /> */}
-            {/* <pointLight intensity={1.12} position={[0, 0, 0]} /> */}
-
-            {/* <Light /> */}
             <KeyLight brightness={10} color="#ccccff" />
             <FillLight brightness={10} color="#ffffff" />
             <RimLight brightness={10} color="#eeeeff" />
+            <ShadowLight />
         </group>
     );
 };

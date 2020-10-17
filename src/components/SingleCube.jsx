@@ -84,10 +84,11 @@ export default () => {
 
     //#endregion ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
 
+    const cubeDims = [0.005, 0.75, 0.75];
 
     return (
-        <mesh ref={meshRef} position={position} onClick={e => onClick(e)} onPointerOver={e => onHover(e, true)} onPointerOut={e => onHover(e, false)}>
-            <boxBufferGeometry attach="geometry" args={[0.005, 0.75, 1]} />
+        <mesh ref={meshRef} position={position} onClick={e => onClick(e)} onPointerOver={e => onHover(e, true)} onPointerOut={e => onHover(e, false)} castShadow receiveShadow>
+            <boxBufferGeometry attach="geometry" args={cubeDims} />
             <meshStandardMaterial attach="material" color={color} roughness={0.6} side={DoubleSide} metalness={0.4} />
         </mesh>
     );

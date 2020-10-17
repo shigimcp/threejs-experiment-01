@@ -4,7 +4,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRef, useMemo } from 'react';
 
-// import * as THREE from 'three';
 import { DoubleSide } from "three";
 import { Box3, Sphere } from "three";
 
@@ -56,8 +55,6 @@ function LogoShape(props) {
     const logoGroupRef = useRef()
 
     useEffect(() => {
-        // const box = new THREE.Box3().setFromObject(logoGroupRef.current)
-        // const sphere = new THREE.Sphere()
         const box = new Box3().setFromObject(logoGroupRef.current)
         const sphere = new Sphere()
         box.getBoundingSphere(sphere)
@@ -101,13 +98,17 @@ function LogoMesh(props) {
     let extrudeSettings = {
         curveSegments: 7, 
         steps: 2, 
-        depth: 15, 
-        // bevelEnabled: true, 
+        depth: 25, 
         bevelEnabled: false, 
-        bevelThickness: 10,
-        bevelSize: 10, 
-        bevelOffset: 0, 
-        bevelSegments: 10, 
+
+        // curveSegments: 7,
+        // steps: 2,
+        // depth: 25,
+        // bevelEnabled: true, 
+        // bevelThickness: 5,
+        // bevelSize: 5,
+        // bevelOffset: 0,
+        // bevelSegments: 5, 
     };
 
     if (props.extrudeDir === 'negative') {
@@ -124,8 +125,6 @@ function LogoMesh(props) {
 
     
     useEffect(() => {
-        // const box = new THREE.Box3().setFromObject(logoMeshRef.current)
-        // const sphere = new THREE.Sphere()
         const box = new Box3().setFromObject(logoMeshRef.current)
         const sphere = new Sphere()
         box.getBoundingSphere(sphere)
@@ -209,12 +208,11 @@ function LogoMesh(props) {
     const meshScaleFactor = 0.005;
     // const meshColor = "#000000";
     // const meshColor = "#ff0000";
+    const meshColor = "#000022";
 
     return (
-        <mesh id={props.id} scale={[meshScaleFactor, -meshScaleFactor, meshScaleFactor]} position={center} ref={logoMeshRef}>
-            {/* <meshStandardMaterial attach="material" color={props.color} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            <meshStandardMaterial attach="material" color={props.color} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} metalness="0.4" />
+        <mesh id={props.id} scale={[meshScaleFactor, -meshScaleFactor, meshScaleFactor]} position={center} castShadow receiveShadow ref={logoMeshRef}>
+            <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} metalness="0.4" />
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     )
@@ -227,10 +225,8 @@ function LogoMesh(props) {
 export default function Logo() {
     return (
         <>
-            {/* <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="positive" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="negative" /> */}
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillColor="#ff0000" fillOpacity="1" extrudeDir="positive" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillColor="#0000ff" fillOpacity="1" extrudeDir="negative" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="positive" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="negative" />
         </>
     )
 }
