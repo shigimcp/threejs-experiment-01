@@ -20,6 +20,9 @@ export default {
     // "Sirin Stencil": "https://fonts.gstatic.com/s/sirinstencil/v6/mem4YaWwznmLx-lzGfN7MdRyRc9MAQ.woff",
     // "Roboto Slab": "https://rawcdn.githack.com/google/fonts/3b179b729ac3306ab2a249d848d94ff08b90a0af/apache/robotoslab/static/RobotoSlab-Black.ttf",
 
-    "AnimeAceItalic": "./AnimeAceItalic.woff",
-    "Chalet-ParisNineteenSixty": "./ChaleParNinSix.woff"
+    // "AnimeAceItalic": "./AnimeAceItalic.woff",
+    // "Chalet-ParisNineteenSixty": "./ChaleParNinSix.woff"
+
+    "AnimeAceItalic": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/AnimeAceItalic.woff",
+    "Chalet-ParisNineteenSixty": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/ChaleParNinSix.woff"
 };
