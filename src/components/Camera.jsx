@@ -2,8 +2,10 @@
 
 import React from "react";
 import { useRef, useEffect } from "react";
+// import { useRef } from "react";
 
 import { useThree } from "react-three-fiber";
+// import { extend } from "react-three-fiber";
 
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // extend({ OrbitControls });
@@ -44,19 +46,48 @@ import { useThree } from "react-three-fiber";
 
 //#region ==================== CAMERA - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
 
-// export default function Camera(props) {
-export default (props) => {
-
-    const cameraRef = useRef()
-    const { setDefaultCamera } = useThree()
+function Camera01(props) {
+    const cameraRef = useRef();
+    const { setDefaultCamera } = useThree();
 
     // Make the camera known to the system
-    useEffect(() => void setDefaultCamera(cameraRef.current), [setDefaultCamera])
+    useEffect(() => void setDefaultCamera(
+        cameraRef.current
+    // ), []);
+    ), [setDefaultCamera]);
 
     // Update it every frame
-    // useFrame(() => cameraRef.current.updateMatrixWorld())
+    // useFrame(() => cameraRef.current.updateMatrixWorld());
 
-    return <perspectiveCamera ref={cameraRef} {...props} />
+
+    return (
+        <perspectiveCamera ref={cameraRef} {...props} />
+    )
+}
+
+export default function Camera(props) {
+// export default (props) => {
+// export default () => {
+
+    // const cameraRef = useRef();
+    // const { setDefaultCamera } = useThree();
+
+    // // Make the camera known to the system
+    // useEffect(() => void setDefaultCamera(cameraRef.current), [setDefaultCamera]);
+
+    // // Update it every frame
+    // // useFrame(() => cameraRef.current.updateMatrixWorld());
+
+    // return (
+    //     <group>
+    //         <perspectiveCamera ref={cameraRef} {...props} />
+    //     </group>
+    // );
+
+
+    return (
+        <Camera01 position={[0, 0, 7.5]} fov={45} />
+    )
 }
 
 //#endregion ==================== CAMERA - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================

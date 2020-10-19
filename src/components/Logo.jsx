@@ -224,9 +224,9 @@ function LogoMesh(props) {
 
 export default function Logo() {
     return (
-        <>
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="positive" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.5" extrudeDir="negative" />
-        </>
+        <group>
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.25" extrudeDir="positive" />
+            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.25" extrudeDir="negative" />
+        </group>
     )
 }

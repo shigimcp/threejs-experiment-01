@@ -6,7 +6,8 @@ import React from "react";
 
 
 
-export default () => {
+// export default () => {
+export default function Lights(props) {
 
     //#region ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
@@ -22,7 +23,6 @@ export default () => {
                 position={[-2, 0, 5]}
                 lookAt={[0, 0, 0]}
                 penumbra={1}
-                castShadow
             />
         );
     }
@@ -42,7 +42,6 @@ export default () => {
                 position={[2, 1, 4]}
                 lookAt={[0, 0, 0]}
                 penumbra={2}
-                castShadow
             />
         );
     }
@@ -61,7 +60,6 @@ export default () => {
                 color={color}
                 position={[1, 4, -2]}
                 rotation={[0, 180, 0]}
-                castShadow
             />
         );
     }

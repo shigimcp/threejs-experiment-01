@@ -8,7 +8,8 @@ import { DoubleSide } from "three";
 //#endregion ==================== IMPORTS ====================
 
 
-export default () => {
+// export default () => {
+export default function Cube() {
 
     const meshRef = useRef();
     const timeRef = useRef(0);

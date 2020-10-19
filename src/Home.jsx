@@ -7,23 +7,22 @@ import Scene from "./components/Scene";
 import Lights from "./components/Lights";
 import Camera from "./components/Camera"
 
-import Logo from "./components/Logo";
-import Cubes from "./components/Cubes";
+import * as THREE from 'three'
 
 // import "./styles.css";
 
 export default function Home() {
+
+    window.scene = new THREE.Scene();
+    window.THREE = THREE;
+
     return (
-        <>
-            <Canvas shadowMap>
-                <Suspense fallback={null}>
-                    <Logo />
-                    <Cubes />
-                    <Lights />
-                    <Camera position={[0, 0, 6.25]} fov={50} />
-                    <Scene />
-                </Suspense>
-            </Canvas>
-        </>
-    );
+        <Canvas shadowMap>
+            <Suspense fallback={null}>
+                <Lights />
+                <Camera />
+                <Scene />
+            </Suspense>
+        </Canvas>
+    )
 }
