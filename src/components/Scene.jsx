@@ -112,7 +112,8 @@ export default function Scene() {
         const hedOptions = ({
             // font: fonts["Chalet-ParisNineteenSixty"],
             fontSize: 0.75,
-            color: "#9999ff",
+            color: "#ff0000",
+            // color: "#9999ff",
             // maxWidth: 15,
             // lineHeight: 1,
             // letterSpacing: 0,
@@ -135,7 +136,8 @@ export default function Scene() {
         const subhedOptions = ({
             // font: fonts["Chalet-ParisNineteenSixty"],
             fontSize: 0.5,
-            color: "#ff0000",
+            color: "#0000ff",
+            // color: "#ff0000",
             // maxWidth: 15,
             // lineHeight: 1,
             // letterSpacing: 0,
