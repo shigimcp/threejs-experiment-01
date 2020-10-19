@@ -88,7 +88,7 @@ export default function Scene() {
             // maxWidth: 15,
             // maxWidth: window.innerWidth,
             // clipRect: [-6.25, 1.75, 150, 150], 
-            clipRect: [0, -5, 1500, 50], 
+            clipRect: [0, -5, 150, 50], 
             lineHeight: 1,
             letterSpacing: 0,
             textAlign: "left",
