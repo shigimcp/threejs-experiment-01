@@ -38,7 +38,7 @@ export default function Scene() {
         return (
             <mesh rotation={[5, 0, 0]} position={[0, -5, 0]} receiveShadow>
                 <planeBufferGeometry attach="geometry" args={[500, 500]} />
-                <meshPhongMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
+                <meshStandardMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
             </mesh>
         );
     }
@@ -53,7 +53,7 @@ export default function Scene() {
         return (
             <mesh position={[0, -1, -5]} receiveShadow>
                 <planeBufferGeometry attach="geometry" args={[500, 500]} />
-                <meshPhongMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
+                <meshStandardMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
             </mesh>
         );
     }
@@ -157,11 +157,11 @@ export default function Scene() {
         return (
             <group>
                 <Text text={textHed} {...genOptions} {...hedOptions}>
-                    {<meshStandardMaterial attach="material" color={hedOptions.color} />}
+                    {<meshPhongMaterial attach="material" color={hedOptions.color} />}
                 </Text>
 
                 <Text text={textSubhed} {...genOptions} {...subhedOptions}>
-                    {<meshStandardMaterial attach="material" color={subhedOptions.color} />}
+                    {<meshPhongMaterial attach="material" color={subhedOptions.color} />}
                 </Text>
             </group>
         );
