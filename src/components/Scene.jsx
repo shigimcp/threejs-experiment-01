@@ -4,7 +4,7 @@ import React from "react";
 // import { useState } from "react";
 // import { useRef } from "react";
 
-import { DoubleSide } from "three";
+import { DoubleSide, MeshPhongMaterial } from "three";
 
 // import Text from "./Text";
 import fonts from "../fonts/fonts";
@@ -12,10 +12,10 @@ import fonts from "../fonts/fonts";
 import { extend } from "react-three-fiber";
 
 // import { Canvas3D, Object3DFacade } from "troika-3d";
-// import { Text } from "troika-three-text";
 // import { Text3DFacade } from "troika-3d-text";
-import { Text } from "@react-three/drei";
+// import { Text } from "troika-three-text";
 // import { Text as TextMeshImpl } from 'troika-three-text';
+import { Text } from "@react-three/drei";
 
 import Logo from "./Logo";
 import Cubes from "./Cubes";
@@ -38,7 +38,7 @@ export default function Scene() {
         return (
             <mesh rotation={[5, 0, 0]} position={[0, -5, 0]} receiveShadow>
                 <planeBufferGeometry attach="geometry" args={[500, 500]} />
-                <meshStandardMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
+                <meshPhongMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
             </mesh>
         );
     }
@@ -53,7 +53,7 @@ export default function Scene() {
         return (
             <mesh position={[0, -1, -5]} receiveShadow>
                 <planeBufferGeometry attach="geometry" args={[500, 500]} />
-                <meshStandardMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
+                <meshPhongMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
             </mesh>
         );
     }
