@@ -15,10 +15,11 @@ export default function Canvas() {
 
     window.scene = new THREE.Scene();
     window.THREE = THREE;
+    // <Suspense fallback={null}>
 
     return (
         <Canvas shadowMap>
-            <Suspense fallback={null}>
+            <Suspense>
                 <Lights />
                 <Camera />
                 <Scene />

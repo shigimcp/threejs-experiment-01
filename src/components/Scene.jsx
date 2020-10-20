@@ -4,7 +4,8 @@ import React from "react";
 // import { useState } from "react";
 // import { useRef } from "react";
 
-import { DoubleSide, MeshPhongMaterial } from "three";
+import { DoubleSide } from "three";
+// import { MeshPhongMaterial } from "three";
 
 // import Text from "./Text";
 import fonts from "../fonts/fonts";

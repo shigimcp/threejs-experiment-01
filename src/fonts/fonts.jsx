@@ -23,6 +23,8 @@ export default {
     // "AnimeAceItalic": "./AnimeAceItalic.woff",
     // "Chalet-ParisNineteenSixty": "./ChaleParNinSix.woff"
 
-    "AnimeAceItalic": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/AnimeAceItalic.woff",
-    "Chalet-ParisNineteenSixty": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/ChaleParNinSix.woff"
+    // "AnimeAceItalic": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/AnimeAceItalic.woff",
+    // "Chalet-ParisNineteenSixty": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/ChaleParNinSix.woff"
+    "AnimeAceItalic": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/AnimeAceItalic.otf",
+    "Chalet-ParisNineteenSixty": "https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/ChaleParNinSix.otf"
 };
