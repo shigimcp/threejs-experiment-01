@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 
-// import App from './App';
-import Home from './Home';
-// import './index.css';
+import App from './App';
+// import Home from './Home';
+
 import './styles.css'
 
 ReactDOM.render(
-    <Home />,
+    <App />,
     document.getElementById('root')
 );
 

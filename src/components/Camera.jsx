@@ -86,7 +86,7 @@ export default function Camera(props) {
 
 
     return (
-        <Camera01 position={[0, 0, 7.5]} fov={45} />
+        <Camera01 position={[0, 0, 7.5]} fov={40} />
     )
 }
 

@@ -2,15 +2,13 @@ import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
-// import Home from './Home';
-import Canvas from './Canvas';
+import Home from './Home';
 
 // import "./styles.css";
 
 function App() {
     return (
-        // <Home />
-        <Canvas />
+        <Home />
     )
 }
 
