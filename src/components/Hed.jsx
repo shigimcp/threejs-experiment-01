@@ -1,18 +1,16 @@
 //#region ==================== IMPORTS ====================
 
-import React, { useMemo } from 'react';
+import React, { useRef, useMemo } from 'react';
 
 import * as THREE from 'three';
 import { useLoader, useUpdate } from 'react-three-fiber';
 
-// import { TestFont } from '../fonts/ChaleParNinSix.json';
-
 //#endregion ==================== IMPORTS ====================
 
 
-//#region ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+//#region ==================== FUNCTION: Text - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
 
-export default function Text ({ children, vAlign = 'center', hAlign = 'center', size = 1, color = '#0000ff', ...props }) {
+function Text({ children, vAlign = 'center', hAlign = 'center', size = 1, color = '#0000ff', ...props }) {
 
     const font = useLoader(THREE.FontLoader, 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/ChaleParNinSix.json')
 
@@ -22,6 +20,7 @@ export default function Text ({ children, vAlign = 'center', hAlign = 'center', 
     )
 
     const meshRef = useUpdate(
+
         self => {
             const size = new THREE.Vector3()
             self.geometry.computeBoundingBox()
@@ -29,6 +28,7 @@ export default function Text ({ children, vAlign = 'center', hAlign = 'center', 
             self.position.x = hAlign === 'center' ? -size.x / 2 : hAlign === 'right' ? 0 : -size.x
             self.position.y = vAlign === 'center' ? -size.y / 2 : vAlign === 'top' ? 0 : -size.y
         },
+
         [children]
     )
 
@@ -43,4 +43,17 @@ export default function Text ({ children, vAlign = 'center', hAlign = 'center', 
     )
 }
 
-//#endregion ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+//#endregion ==================== FUNCTION: Text - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+
+
+export default function Hed() {
+
+    const hedRef = useRef()
+
+    return (
+        <group ref={hedRef}>
+            <Text hAlign="left" position={[0.7625, 1.5, -4]} children="Shigeru McPherson" size={5} />
+            <Text hAlign="left" position={[0, 0.8125, -4]} children="digital designer • art director" size={3} />
+        </group>
+    )
+}

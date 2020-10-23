@@ -21,29 +21,17 @@ function LogoShape(props) {
 
     //#region -------------------- LOGOSHAPE shapes --------------------
 
-    // console.log('');
-    // console.log('-------------------- LOGOSHAPE shapes --------------------');
-    // console.log(props);
-
 
     const { paths } = useLoader(SVGLoader, props.url)
 
     const shapes = useMemo(() =>
         paths.flatMap((thisPath, i) =>
             thisPath.toShapes(true).map((shape) =>
-                // ({ shape, color: thisPath.color, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir, nodeID: thisPath.userData.node.id })
                 ({ shape, color: props.fillColor, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir, nodeID: thisPath.userData.node.id })
             )
             // ), []
         ), [paths, props]
     )
-
-
-    // console.log('paths:');
-    // console.log(paths);
-
-    // console.log('shapes:');
-    // console.log(shapes);
 
     //#endregion -------------------- LOGOSHAPE shapes --------------------
 
@@ -55,10 +43,14 @@ function LogoShape(props) {
     const logoGroupRef = useRef()
 
     useEffect(() => {
+
         const box = new Box3().setFromObject(logoGroupRef.current)
         const sphere = new Sphere()
+
         box.getBoundingSphere(sphere)
+
         setCenter([0, -sphere.center.y, 0])
+
     }, [])
 
     //#endregion -------------------- LOGOSHAPE center --------------------
@@ -90,8 +82,8 @@ function LogoShape(props) {
 
 function LogoMesh(props) {
 
-    // console.log('==================== LOGOMESH ====================');
-    // console.log(props);
+    console.log('==================== LOGOMESH ====================');
+    console.log(props);
 
     //#region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
@@ -100,15 +92,6 @@ function LogoMesh(props) {
         steps: 2, 
         depth: 25, 
         bevelEnabled: false, 
-
-        // curveSegments: 7,
-        // steps: 2,
-        // depth: 25,
-        // bevelEnabled: true, 
-        // bevelThickness: 5,
-        // bevelSize: 5,
-        // bevelOffset: 0,
-        // bevelSegments: 5, 
     };
 
     if (props.extrudeDir === 'negative') {
@@ -123,8 +106,9 @@ function LogoMesh(props) {
     const logoMeshRef = useRef()
     const [center, setCenter] = useState([0, 0, 0])
 
-    
+
     useEffect(() => {
+
         const box = new Box3().setFromObject(logoMeshRef.current)
         const sphere = new Sphere()
         box.getBoundingSphere(sphere)
@@ -133,41 +117,8 @@ function LogoMesh(props) {
         //#region - - - - - - - - - - - LOGOMESH center: via props.nodeID (see LogoShape below) - - - - - - - - - - -
 
         switch (props.nodeID) {
-            // case 'afro':
-
-            //     console.log('')
-            //     console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
-            //     console.log(logoMeshRef.current.material.color)
-            //     console.log(logoMeshRef.current)
-            //     console.log('props.nodeID = ' + props.nodeID)
-
-            //     setCenter([-sphere.center.x, 0, 0])
-
-            //     console.log('center = ' + center)
-
-            //     break;
-
-            // case 'glassesID':
-
-            //     console.log('')
-            //     console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
-            //     console.log(logoMeshRef.current.material.color)
-            //     console.log(logoMeshRef.current)
-            //     console.log('props.nodeID = ' + props.nodeID)
-
-            //     setCenter([-sphere.center.x, 0, 0])
-
-            //     console.log('center = ' + center)
-
-            //     break;
 
             case 'kanji_ko01ID':
-
-                // console.log('')
-                // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
-                // console.log(logoMeshRef.current.material.color)
-                // console.log(logoMeshRef.current)
-                // console.log('props.nodeID = ' + props.nodeID)
 
                 setCenter([-sphere.center.x * 0.809716599190283, 0, 0])
 
@@ -175,23 +126,11 @@ function LogoMesh(props) {
 
             case 'kanji_ko02ID':
 
-                // console.log('')
-                // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
-                // console.log(logoMeshRef.current.material.color)
-                // console.log(logoMeshRef.current)
-                // console.log('props.nodeID = ' + props.nodeID)
-
                 setCenter([-sphere.center.x * 0.798522414124903, 0, 0])
 
                 break;
 
             default:
-
-                // console.log('')
-                // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
-                // console.log(logoMeshRef.current.material.color)
-                // console.log(logoMeshRef.current)
-                // console.log('props.nodeID = ' + props.nodeID)
 
                 setCenter([-sphere.center.x, 0, 0])
 
@@ -205,10 +144,42 @@ function LogoMesh(props) {
     //#endregion -------------------- LOGOMESH center --------------------
 
     
-    const meshScaleFactor = 0.005;
-    // const meshColor = "#000000";
-    // const meshColor = "#ff0000";
+    let meshScaleFactor;
     const meshColor = "#000022";
+
+
+    //#region -------------------- LOGOMESH responsive --------------------
+
+    switch (true) {
+
+        case (window.innerWidth >= 1441):
+            meshScaleFactor = 0.005;
+
+            break;
+
+        case (window.innerWidth >= 992 && window.innerWidth <= 1440):
+            meshScaleFactor = 0.005;
+
+            break;
+
+        case (window.innerWidth >= 768 && window.innerWidth <= 991):
+            meshScaleFactor = 0.005;
+
+            break;
+
+        case (window.innerWidth >= 375 && window.innerWidth <= 767):
+            meshScaleFactor = 0.00225;
+
+            break;
+
+        default:
+            meshScaleFactor = 0.005;
+
+            break;
+    }
+
+    //#endregion -------------------- LOGOMESH responsive --------------------
+
 
     return (
         <mesh id={props.id} scale={[meshScaleFactor, -meshScaleFactor, meshScaleFactor]} position={center} castShadow receiveShadow ref={logoMeshRef}>

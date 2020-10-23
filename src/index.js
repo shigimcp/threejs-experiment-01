@@ -8,8 +8,13 @@ import App from './App';
 
 import './styles.css'
 
+
 ReactDOM.render(
-    <App />,
+
+    <React.StrictMode>
+        <App />,
+    </React.StrictMode>,
+
     document.getElementById('root')
 );
 

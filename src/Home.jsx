@@ -1,5 +1,4 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import { Suspense } from 'react';
 
 import { Canvas } from "react-three-fiber";
@@ -9,12 +8,7 @@ import Camera from "./components/Camera"
 
 import * as THREE from 'three'
 
-// import "./styles.css";
-
 export default function Home() {
-
-    window.scene = new THREE.Scene();
-    window.THREE = THREE;
 
     return (
         <Canvas shadowMap>
