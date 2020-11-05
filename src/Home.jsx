@@ -1,6 +1,7 @@
 //#region ==================== IMPORTS ====================
 
 import React from "react";
+// import ReactDOM from "react-dom";
 import { Suspense } from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
@@ -14,7 +15,6 @@ import Camera from "./components/Camera";
 
 import * as THREE from 'three';
 
-<<<<<<< HEAD
 // import "./styles.css";
 
 //#endregion ==================== IMPORTS ====================
@@ -116,10 +116,6 @@ export default function Home() {
 
 
 
-=======
-export default function Home() {
-
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
     return (
         <Canvas shadowMap>
             <Suspense fallback={null}>

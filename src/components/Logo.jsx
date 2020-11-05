@@ -20,7 +20,6 @@ import { useFrame } from 'react-three-fiber';
 const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
 // const localLoc = '../images/';
 
-<<<<<<< HEAD
 // const getWidth = () => window.innerWidth
 //     || document.documentElement.clientWidth
 //     || document.body.clientWidth;
@@ -38,21 +37,6 @@ const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-ex
 //     console.log(thisObject);
 
 // }
-=======
-
-    const { paths } = useLoader(SVGLoader, props.url)
-
-    const shapes = useMemo(() =>
-        paths.flatMap((thisPath, i) =>
-            thisPath.toShapes(true).map((shape) =>
-                ({ shape, color: props.fillColor, fillOpacity: props.fillOpacity, extrudeDir: props.extrudeDir, nodeID: thisPath.userData.node.id })
-            )
-            // ), []
-        ), [paths, props]
-    )
-
-    //#endregion -------------------- LOGOSHAPE shapes --------------------
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
 //#endregion ==================== FUNCTIONS ====================
 
@@ -60,24 +44,13 @@ const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-ex
 
 //#region ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
-<<<<<<< HEAD
 function LogoMesh(props) {
-=======
-    useEffect(() => {
-
-        const box = new Box3().setFromObject(logoGroupRef.current)
-        const sphere = new Sphere()
-
-        box.getBoundingSphere(sphere)
-
-        setCenter([0, -sphere.center.y, 0])
-
-    }, [])
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
     // console.log('');
     // console.log('==================== LOGOMESH: EXTRUDE ====================');
     // console.log(props);
+    // console.log('props.shape = ' + props.shape);
+    // console.log('props.extrudeDir = ' + props.extrudeDir);
 
 
     //#region -------------------- ASSETS _Ref --------------------
@@ -101,19 +74,19 @@ function LogoMesh(props) {
 
     //#endregion -------------------- useState DEFs --------------------
 
-<<<<<<< HEAD
-=======
-    console.log('==================== LOGOMESH ====================');
-    console.log(props);
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
     //#region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
     let extrudeSettings = {
-<<<<<<< HEAD
+        // curveSegments: 7,
+        // steps: 2,
+        // depth: 5, 
+        // // depth: 2.5,
+        // bevelEnabled: false,
+
         curveSegments: 7,
-        steps: 2,
-        depth: 5, 
+        steps: 1,
+        depth: 5,
         // depth: 2.5,
         bevelEnabled: false,
 
@@ -125,16 +98,9 @@ function LogoMesh(props) {
         // bevelSize: 5,
         // bevelOffset: 0,
         // bevelSegments: 5, 
-=======
-        curveSegments: 7, 
-        steps: 2, 
-        depth: 25, 
-        bevelEnabled: false, 
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
     };
 
 
-    // console.log('props.extrudeDir = ' + props.extrudeDir);
     // console.log('extrudeSettings.depth = ' + extrudeSettings.depth);
 
 
@@ -150,20 +116,8 @@ function LogoMesh(props) {
 
     //#region -------------------- LOGOMESH center --------------------
 
-<<<<<<< HEAD
     useEffect(() => {
     // useMemo(() => {
-=======
-    const logoMeshRef = useRef()
-    const [center, setCenter] = useState([0, 0, 0])
-
-
-    useEffect(() => {
-
-        const box = new Box3().setFromObject(logoMeshRef.current)
-        const sphere = new Sphere()
-        box.getBoundingSphere(sphere)
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
         const bBox = new Box3().setFromObject(logoMesh_Ref.current);
         const bSphere = new Sphere();
@@ -175,7 +129,6 @@ function LogoMesh(props) {
         //#region -------------------- LOGOMESH center: switch props.nodeID (see LogoShape below) --------------------
 
         switch (props.nodeID) {
-<<<<<<< HEAD
 
             // case 'afro':
 
@@ -232,12 +185,6 @@ function LogoMesh(props) {
                 setCenter([-bSphere.center.x * 0.809716599190283, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
-=======
-
-            case 'kanji_ko01ID':
-
-                setCenter([-sphere.center.x * 0.809716599190283, 0, 0])
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
                 break;
 
@@ -246,7 +193,6 @@ function LogoMesh(props) {
 
             case 'kanji_ko02ID':
 
-<<<<<<< HEAD
                 //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko02ID' - - - - - - - - - - -
 
                 // console.log('');
@@ -260,9 +206,6 @@ function LogoMesh(props) {
                 setCenter([-bSphere.center.x * 0.798522414124903, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
-=======
-                setCenter([-sphere.center.x * 0.798522414124903, 0, 0])
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
                 break;
 
@@ -271,7 +214,6 @@ function LogoMesh(props) {
 
             default:
 
-<<<<<<< HEAD
                 //#region - - - - - - - - - - - LOGOMESH center: case = default - - - - - - - - - - -
 
                 // console.log('');
@@ -285,9 +227,6 @@ function LogoMesh(props) {
                 setCenter([-bSphere.center.x, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
-=======
-                setCenter([-sphere.center.x, 0, 0])
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
                 break;
 
@@ -329,7 +268,6 @@ function LogoMesh(props) {
 
     //#endregion -------------------- LOGOMESH center --------------------
 
-<<<<<<< HEAD
 
     //#region -------------------- LOGOMESH responsive --------------------
 
@@ -402,55 +340,30 @@ function LogoMesh(props) {
 
     // const meshColor = "#000000";
     // const meshColor = "#ff0000";
-    const meshColor = "#000022";
+    const meshColor = "#0000ff";
+    // const meshColor = "#000022";
 
 
-=======
-    
-    let meshScaleFactor;
-    const meshColor = "#000022";
-
-
-    //#region -------------------- LOGOMESH responsive --------------------
-
-    switch (true) {
-
-        case (window.innerWidth >= 1441):
-            meshScaleFactor = 0.005;
-
-            break;
-
-        case (window.innerWidth >= 992 && window.innerWidth <= 1440):
-            meshScaleFactor = 0.005;
-
-            break;
-
-        case (window.innerWidth >= 768 && window.innerWidth <= 991):
-            meshScaleFactor = 0.005;
-
-            break;
-
-        case (window.innerWidth >= 375 && window.innerWidth <= 767):
-            meshScaleFactor = 0.00225;
-
-            break;
-
-        default:
-            meshScaleFactor = 0.005;
-
-            break;
-    }
-
-    //#endregion -------------------- LOGOMESH responsive --------------------
-
-
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
     return (
         <mesh id={props.id} scale={[meshScaleFactor, -meshScaleFactor, meshScaleFactor]} position={center} castShadow receiveShadow ref={logoMesh_Ref}>
             {/* <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} roughness="0" metalness="0.4" /> */}
             {/* <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} roughness="1" metalness="1" /> */}
-            <meshStandardMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} />
+            {/* <meshStandardMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+
             {/* <meshPhongMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshPhongMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+
+            {/* <meshBasicMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshDepthMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshDistanceMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshLambertMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshMatcapMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            <meshNormalMaterial attach="material" color={meshColor} wireframe={true} depthWrite={true} transparent opacity={props.fillOpacity} />
+            {/* <meshPhongMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshPhysicalMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshStandardMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+            {/* <meshToonMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
+
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     );
@@ -461,7 +374,6 @@ function LogoMesh(props) {
 
 
 //#region ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
-
 
 // const logoGroup_Ref = React.createRef();
 
@@ -519,13 +431,15 @@ function LogoShape(props) {
 
     //#region -------------------- LOGOSHAPE spin --------------------
 
+    // const testRotation = [0, 90, 0];
+
     useFrame(() => {
         logoGroup_Ref.current.rotation.y += 0.025;
+        // logoGroup_Ref.current.rotation.y = -0.5;
     });
 
     //#endregion -------------------- LOGOSHAPE spin --------------------
 
-    // const testRotation = [0, 90, 0];
 
     return (
         <group position={center} ref={logoGroup_Ref}>
@@ -543,10 +457,6 @@ function LogoShape(props) {
 //#endregion ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
 
-
-
-
-
 export default function Logo() {
 
     // console.log('');
@@ -554,6 +464,8 @@ export default function Logo() {
 
 
     const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
+    // const logoSVG01 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
+    // const logoSVG02 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_rev.svg';
 
 
     //#region -------------------- ASSETS _Ref --------------------
@@ -660,8 +572,9 @@ export default function Logo() {
             <LogoShape url={logoSVG} fillOpacity="0.25" />
             <LogoShape url={logoSVG} fillOpacity="0.25" ref={logoGroup_Ref} /> */}
 
-            <LogoShape url={logoSVG} fillOpacity="0.5" extrudeDir="positive" />
-            <LogoShape url={logoSVG} fillOpacity="0.5" extrudeDir="negative" />
+            <LogoShape id="logoSVGid" url={logoSVG} fillOpacity="0.25" extrudeDir="positive" />
+            {/* <LogoShape id="logoSVG01id" url={logoSVG01} fillOpacity="0.5" extrudeDir="positive" />
+            <LogoShape id="logoSVG02id" url={logoSVG02} fillOpacity="0.5" extrudeDir="negative" /> */}
         </>
     );
 }

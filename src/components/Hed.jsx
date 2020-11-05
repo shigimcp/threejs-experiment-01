@@ -37,12 +37,8 @@ function Text({ children, vAlign = 'center', hAlign = 'center', size = 1, color 
         <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
             <mesh ref={meshRef} castShadow>
                 <textGeometry attach="geometry" args={[children, config]} />
-<<<<<<< HEAD
                 <meshStandardMaterial attach="material" color="#000066" />
                 {/* <meshPhongMaterial attach="material" color="#0000ff" /> */}
-=======
-                <meshPhongMaterial attach="material" color="#0000ff" />
->>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
             </mesh>
         </group>
     )

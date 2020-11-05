@@ -17,7 +17,8 @@ export default function Text ({ children, vAlign = 'center', hAlign = 'center', 
     const font = useLoader(THREE.FontLoader, 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/fonts/ChaleParNinSix.json')
 
     const config = useMemo(
-        () => ({ font, size: 1, height: 0.125, curveSegments: 10, bevelEnabled: true, bevelThickness: 0, bevelSize: 0, bevelOffset: 0, bevelSegments: 0 }),
+        // () => ({ font, size: 1, height: 0.125, curveSegments: 10, bevelEnabled: true, bevelThickness: 0, bevelSize: 0, bevelOffset: 0, bevelSegments: 0 }),
+        () => ({ font, size: 1, height: 0.125, curveSegments: 10, bevelEnabled: false }),
         [font]
     )
 
