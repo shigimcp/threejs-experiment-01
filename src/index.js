@@ -8,15 +8,21 @@ import App from './App';
 
 import './styles.css'
 
+
 ReactDOM.render(
 
     <React.StrictMode>
         <App />,
+<<<<<<< HEAD
         {/* <Home />, */}
     </React.StrictMode>,
 
     // <App />,
 
+=======
+    </React.StrictMode>,
+
+>>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
     document.getElementById('root')
 );
 

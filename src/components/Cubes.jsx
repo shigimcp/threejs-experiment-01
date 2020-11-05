@@ -12,7 +12,6 @@ import Cube from "./SingleCube";
 
 //#region ==================== CUBES - REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
 
-// export default () => {
 export default function Cubes(props) {
     const cubeGroup = useRef();
 

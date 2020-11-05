@@ -160,13 +160,61 @@ canvas {
 /* #endregion ==================== GENERAL ==================== */
 
 
-/* #region ==================== SCENE ==================== */
+/* #region ==================== CANVAS ==================== */
 
-.backdrop {
-    // border: 01px solid #ff0000;
-    background: #ff0000;
-    font-size: 20em;
-    width: 100%;
-}
+// @media  
+//     only screen and (min-device-width: 1441px) 
+//     { 
+//         Canvas {
+//             width: 50%;
+//         }
+//     }
 
-/* #endregion ==================== SCENE ==================== */
+// @media  
+//     // only screen and (min-device-width: 992px) 
+//     // only screen and (min-device-width: 992px), 
+//     only screen and (max-device-width: 1440px) 
+//     { 
+//         Canvas {
+//             width: 50%;
+//         }
+//     }
+
+// @media  
+//     // only screen and (min-device-width: 992px) 
+//     // only screen and (min-device-width: 992px), 
+//     only screen and (max-device-width: 991px) 
+//     { 
+//         Canvas {
+//             width: 50%;
+//         }
+//     }
+
+// @media  
+//     // only screen and (min-device-width: 992px) 
+//     // only screen and (min-device-width: 992px), 
+//     only screen and (max-device-width: 991px) 
+//     { 
+//         Canvas {
+//             width: 60%;
+//         }
+//     }
+
+// @media  
+//     // only screen and (min-device-width: 992px) 
+//     // only screen and (min-device-width: 992px), 
+//     only screen and (max-device-width: 767px) 
+//     { 
+//         Canvas {
+//             width: 80%;
+//         }
+//     }
+
+// .backdrop {
+//     // border: 01px solid #ff0000;
+//     background: #ff0000;
+//     font-size: 20em;
+//     width: 100%;
+// }
+
+/* #endregion ==================== CANVAS ==================== */

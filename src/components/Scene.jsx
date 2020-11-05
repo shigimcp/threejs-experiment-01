@@ -1,5 +1,6 @@
 //#region ==================== IMPORTS ====================
 
+<<<<<<< HEAD
 import React from 'react';
 // import { Suspense } from 'react';
 // import { useRef } from 'react';
@@ -47,6 +48,19 @@ import Logo from "./Logo";
 // }
 
 //#endregion ==================== FUNCTIONS ====================
+=======
+//#region -------------------- HED: PLAIN TEXT GEOMTRY - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef --------------------
+
+import React from 'react';
+
+import { DoubleSide } from "three";
+
+import Hed from "./Hed";
+import Logo from "./Logo";
+import Cubes from "./Cubes";
+
+//#endregion -------------------- HED: PLAIN TEXT GEOMTRY - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef --------------------
+>>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
 
 
 
@@ -91,6 +105,7 @@ export default function Scene() {
     //#endregion ==================== SCENE - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
 
+<<<<<<< HEAD
 
 
 
@@ -161,6 +176,10 @@ export default function Scene() {
     return (
         <group>
         {/* <group ref={scene_Ref}> */}
+=======
+    return (
+        <group>
+>>>>>>> 59d7706d159d90693242a859250a1fc84fe2a1f7
             <Hed />
             <Logo />
             {/* <Logo nodeID='thisLogo' /> */}
