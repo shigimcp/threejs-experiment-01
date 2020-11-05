@@ -464,7 +464,9 @@ export default function Logo() {
 
 
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
-    const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_02.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_02.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02.svg';
+    const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02_sm.svg';
 
     // const logoSVG01 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
     // const logoSVG02 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_rev.svg';
