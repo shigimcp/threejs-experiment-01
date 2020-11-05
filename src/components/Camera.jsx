@@ -1,8 +1,9 @@
 //#region ==================== IMPORTS ====================
 
 import React from "react";
-import { useRef, useEffect } from "react";
-// import { useRef } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
+// import { useFrame } from "react";
 
 import { useThree } from "react-three-fiber";
 // import { extend } from "react-three-fiber";
@@ -14,80 +15,50 @@ import { useThree } from "react-three-fiber";
 
 
 
-//#region ==================== CAMERA - REF: https://codeworkshop.dev/blog/2020-06-14-creating-a-skybox-with-reflections-in-react-three-fiber/ ====================
+//#region ==================== CAMERA01 - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
 
-// export default () => {
+// function Camera01(props) {
+//     const cameraRef = useRef();
+//     const { setDefaultCamera } = useThree();
 
-//     // Get a reference to the Three.js Camera, and the canvas html element.
-//     // We need these to setup the OrbitControls class.
-//     // https://threejs.org/docs/#examples/en/controls/OrbitControls
+//     // Make the camera known to the system
+//     useEffect(() => void setDefaultCamera(
+//         cameraRef.current
+//     // ), []);
+//     ), [setDefaultCamera]);
 
-//     const {
-//         camera,
-//         gl: { domElement },
-//     } = useThree();
-
-//     // Ref to the controls, so that we can update them on every frame with useFrame
-//     const controlRef = useRef();
-
-//     // useFrame(() => controlRef.current.update(0.25));
+//     // Update it every frame
+//     // useFrame(() => cameraRef.current.updateMatrixWorld());
 
 
 //     return (
-//         <>
-//             <orbitControls args={[camera, domElement]} autoRotate={true} enableZoom={false} ref={controlRef} />
-//         </>
+//         <perspectiveCamera ref={cameraRef} {...props} />
 //     );
-// };
+// }
 
-//#endregion ==================== CAMERA - REF: https://codeworkshop.dev/blog/2020-06-14-creating-a-skybox-with-reflections-in-react-three-fiber/ ====================
-
-
-
-//#region ==================== CAMERA - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
-
-function Camera01(props) {
-    const cameraRef = useRef();
-    const { setDefaultCamera } = useThree();
-
-    // Make the camera known to the system
-    useEffect(() => void setDefaultCamera(
-        cameraRef.current
-    // ), []);
-    ), [setDefaultCamera]);
-
-    // Update it every frame
-    // useFrame(() => cameraRef.current.updateMatrixWorld());
+//#endregion ==================== CAMERA01 - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
 
 
-    return (
-        <perspectiveCamera ref={cameraRef} {...props} />
-    )
-}
-
+// export default function Camera() {
 export default function Camera(props) {
 // export default (props) => {
 // export default () => {
 
-    // const cameraRef = useRef();
-    // const { setDefaultCamera } = useThree();
+    const cameraRef = useRef();
+    const { setDefaultCamera } = useThree();
 
-    // // Make the camera known to the system
-    // useEffect(() => void setDefaultCamera(cameraRef.current), [setDefaultCamera]);
+    // Make the camera known to the system
+    useEffect(() => void setDefaultCamera(cameraRef.current), [setDefaultCamera]);
 
-    // // Update it every frame
-    // // useFrame(() => cameraRef.current.updateMatrixWorld());
-
-    // return (
-    //     <group>
-    //         <perspectiveCamera ref={cameraRef} {...props} />
-    //     </group>
-    // );
-
+    // Update it every frame
+    // useFrame(() => cameraRef.current.updateMatrixWorld());
 
     return (
-        <Camera01 position={[0, 0, 7.5]} fov={40} />
-    )
-}
+        <perspectiveCamera {...props} ref={cameraRef} />
+    );
 
-//#endregion ==================== CAMERA - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
+
+    // return (
+    //     <Camera01 position={[0, 0, 7.5]} fov={40} />
+    // );
+}

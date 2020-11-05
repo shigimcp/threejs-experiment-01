@@ -100,4 +100,4 @@ export default function Lights(props) {
             <ShadowLight />
         </group>
     );
-};
+}

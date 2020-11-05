@@ -29,7 +29,7 @@ export default function Cubes(props) {
         <group ref={cubeGroup}>
             {nodesCubes}
         </group>
-    )
+    );
 }
 
 //#endregion ==================== CUBES - REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================

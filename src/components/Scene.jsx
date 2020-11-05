@@ -1,55 +1,60 @@
 //#region ==================== IMPORTS ====================
 
-//#region -------------------- TEXT - REF: https://www.npmjs.com/package/troika-three-text --------------------
-
-// import React from "react";
-// // import { useState } from "react";
-// // import { useRef } from "react";
-
-// import { DoubleSide } from "three";
-// // import { MeshPhongMaterial } from "three";
-
-// // import Text from "./Text";
-// import fonts from "../fonts/fonts";
-
-// import { extend } from "react-three-fiber";
-
-// // import { Canvas3D, Object3DFacade } from "troika-3d";
-// // import { Text3DFacade } from "troika-3d-text";
-// import { Text } from "troika-three-text";
-// // import { Text as TextMeshImpl } from 'troika-three-text';
-// // import { Text } from "@react-three/drei";
-
-// import Logo from "./Logo";
-// import Cubes from "./Cubes";
-
-
-// extend({ Text });
-// // extend({ TextMeshImpl });
-
-//#endregion -------------------- TEXT - REF: https://www.npmjs.com/package/troika-three-text --------------------
-
-
-//#region -------------------- TEXT - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef --------------------
-
-// import ReactDOM from 'react-dom';
-// import React, { Suspense, useRef } from 'react';
-import React, { useRef } from 'react';
+import React from 'react';
+// import { Suspense } from 'react';
+// import { useRef } from 'react';
+// import { useState } from 'react';
+// import { useEffect } from 'react';
+// import { useFrame } from 'react';
 
 import { DoubleSide } from "three";
-// import { Canvas } from 'react-three-fiber';
-import Text from './Text';
 
+// import { gsap } from 'gsap';
+
+// import Text from './Text';
+
+import Hed from "./Hed";
 import Logo from "./Logo";
-import Cubes from "./Cubes";
-
-//#endregion -------------------- TEXT - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef --------------------
+// import Cubes from "./Cubes";
 
 //#endregion ==================== IMPORTS ====================
 
 
+
+//#region ==================== CONSTANTS ====================
+
+// const getWidth = () => window.innerWidth
+//     || document.documentElement.clientWidth
+//     || document.body.clientWidth;
+
+//#endregion ==================== CONSTANTS ====================
+
+
+//#region ==================== FUNCTIONS ====================
+
+// function centerObject(thisObject) {
+//     console.log('');
+//     console.log('==================== FUNCTION: centerObject(thisObject) ====================');
+//     console.log('thisObject = ');
+//     console.log(thisObject);
+//     // console.log(thisObject.children);
+//     // console.log(thisObject.position);
+
+//     // gsap.set([thisObject], { x: 2, y: 2 });
+//     // gsap.to([thisObject], { x: 2, y: 2, duration: 1 });
+
+//     // thisObject.position = [3, 0, 0];
+// }
+
+//#endregion ==================== FUNCTIONS ====================
+
+
+
 // export default () => {
 export default function Scene() {
+
+    // console.log('');
+    // console.log('====================  export default function Scene()  ====================');
 
     //#region ==================== SCENE - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
@@ -60,6 +65,7 @@ export default function Scene() {
             <mesh rotation={[5, 0, 0]} position={[0, -5, 0]} receiveShadow>
                 <planeBufferGeometry attach="geometry" args={[500, 500]} />
                 <meshStandardMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
+                {/* <meshPhongMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} /> */}
             </mesh>
         );
     }
@@ -75,6 +81,7 @@ export default function Scene() {
             <mesh position={[0, -1, -5]} receiveShadow>
                 <planeBufferGeometry attach="geometry" args={[500, 500]} />
                 <meshStandardMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} />
+                {/* <meshPhongMaterial attach="material" color="white" side={DoubleSide} metalness={0.4} /> */}
             </mesh>
         );
     }
@@ -85,158 +92,81 @@ export default function Scene() {
 
 
 
-    //#region ==================== TEXT - REF: https://www.npmjs.com/package/troika-three-text ====================
-    //        ==================== TEXT - REF: https://codesandbox.io/s/troika-3d-text-via-react-three-fiber-forked-1ebyu ====================
-
-    // function Hed() {
-
-    //     const textHed = "Shigeru McPherson";
-    //     const textSubhed = "digital designer • art director";
-
-    //     // const textHed = "Shi";
-    //     // const textSubhed = "dig";
-
-    //     // const [rotation, setRotation] = useState([0, 0, 0, 0]);
-    //     // const [genOptions, setOpts] = useState({
 
 
-    //     //#region -------------------- genOptions --------------------
+    //#region -------------------- ASSETS _Ref --------------------
 
-    //     const genOptions = ({
-    //         font: fonts["Chalet-ParisNineteenSixty"],
-    //         // fontSize: 0.75,
-    //         // color: "#9999ff",
-    //         // maxWidth: 15,
-    //         // maxWidth: window.innerWidth,
-    //         // clipRect: [-6.25, 1.75, 150, 150], 
-    //         clipRect: [-50, -50, 1500, 500], 
-    //         lineHeight: 1,
-    //         letterSpacing: 0,
-    //         textAlign: "left",
-    //         materialType: "meshPhongMaterial",
+    // const scene_Ref = useRef();
+    // const logo_Ref = useRef();
 
-    //         // position: [0, 0, 0],
-    //         // position: [0, 1.5, -4.25],
-    //         rotation: [0, 0, 0],
-    //         anchorX: "left",
-    //         anchorY: "middle", 
-    //         castShadow: true, 
-    //         receiveShadow: true,
-    //         // font: buildUrl("../fonts/ChaleParNinSix.ttf")
-    //     });
-
-    //     //#endregion -------------------- genOptions --------------------
+    //#endregion -------------------- ASSETS _Ref --------------------
 
 
-    //     //#region -------------------- hedOptions --------------------
+    //#region -------------------- useState DEFs --------------------
 
-    //     const hedOptions = ({
-    //         // font: fonts["Chalet-ParisNineteenSixty"],
-    //         fontSize: 0.75,
-    //         color: "#ff0000",
-    //         // color: "#9999ff",
-    //         // maxWidth: 15,
-    //         // lineHeight: 1,
-    //         // letterSpacing: 0,
-    //         // textAlign: "left",
-    //         // materialType: "meshPhongMaterial",
+    // console.log('');
+    // console.log('-------------------- useState DEFs --------------------');
 
-    //         // position: [-6.25, 1.75, -4.25],
-    //         position: [0, 1.75, -4.25],
-    //         // position: [-window.innerWidth*0.0025, 1.5, -4.25],
-    //         // rotation: [0, 0, 0],
-    //         // anchorX: "left",
-    //         // anchorY: "middle"
-    //     });
+    // let [windowWidth, setWindowWidth] = useState(getWidth());
 
-    //     //#endregion -------------------- hedOptions --------------------
+    // console.log('windowWidth = ' + windowWidth);
+
+    //#endregion -------------------- useState DEFs --------------------
 
 
-    //     //#region -------------------- subhedOptions --------------------
+    //#region -------------------- WINDOW RESIZE - REF: https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c --------------------
 
-    //     const subhedOptions = ({
-    //         // font: fonts["Chalet-ParisNineteenSixty"],
-    //         fontSize: 0.5,
-    //         color: "#0000ff",
-    //         // color: "#ff0000",
-    //         // maxWidth: 15,
-    //         // lineHeight: 1,
-    //         // letterSpacing: 0,
-    //         // textAlign: "left",
-    //         // materialType: "meshPhongMaterial",
+    // useEffect(() => {
 
-    //         // position: [-6.25, 1, -4.25],
-    //         position: [0, 1, -4.25],
-    //         // rotation: [0, 0, 0],
-    //         // anchorX: "left",
-    //         // anchorY: "middle"
-    //     });
+    //     let timeoutId = null;
 
-    //     //#endregion -------------------- subhedOptions --------------------
+    //     const resizeListener = () => {
 
+    //         // console.log('useEffect: WINDOW RESIZE - resizeListener triggered!');
+    //         // // console.log('useEffect: WINDOW RESIZE - logo_Ref.current = ' + logo_Ref.current);
+    //         // // console.log('useEffect: WINDOW RESIZE - scene_Ref.current = ' + scene_Ref.current);
+    //         // console.log('useEffect: WINDOW RESIZE - scene_Ref.current.children = ' + scene_Ref.current.children);
+    //         // console.log(scene_Ref.current.children);
+    //         // console.log('useEffect: WINDOW RESIZE - scene_Ref.current.children[1] = ' + scene_Ref.current.children[1]);
+    //         // console.log(scene_Ref.current.children[1]);
 
-    //     // return (
-    //     //     <group>
-    //     //         <Text text={textHed} {...genOptions} {...hedOptions}>
-    //     //             {<meshPhongMaterial attach="material" color={hedOptions.color} />}
-    //     //         </Text>
+    //         // prevent execution of previous setTimeout
+    //         clearTimeout(timeoutId);
 
-    //     //         <Text text={textSubhed} {...genOptions} {...subhedOptions}>
-    //     //             {<meshPhongMaterial attach="material" color={subhedOptions.color} />}
-    //     //         </Text>
-    //     //     </group>
-    //     // );
+    //         timeoutId = setTimeout(() => setWindowWidth(getWidth()), 150);
 
+    //         // centerObject();
 
-    //     return (
-    //         <group>
-    //             <text text={textHed} {...genOptions} {...hedOptions}>
-    //                 {<meshPhongMaterial attach="material" color={hedOptions.color} />}
-    //             </text>
+    //         // centerObject(logo_Ref.current);
 
-    //             <text text={textSubhed} {...genOptions} {...subhedOptions}>
-    //                 {<meshPhongMaterial attach="material" color={subhedOptions.color} />}
-    //             </text>
-    //         </group>
-    //     );
-    // }
+    //         // centerObject(scene_Ref.current);
+    //         centerObject(scene_Ref.current.children[0]);
+    //         // centerObject(scene_Ref.current.children[1]);
+    //     };
 
-    //#endregion ==================== TEXT - REF: https://www.npmjs.com/package/troika-three-text ====================
+    //     window.addEventListener('resize', resizeListener);
+
+    //     return () => {
+    //         window.removeEventListener('resize', resizeListener);
+    //     }
+
+    // }, []);
+
+    //#endregion -------------------- WINDOW RESIZE - REF: https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c --------------------
 
 
-
-    //#region ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
-
-    function Jumbo() {
-        const ref = useRef()
-
-        return (
-            <group ref={ref}>
-                {/* <Text hAlign="left" position={[0, 4.2, 0]} children="REACT" />
-                <Text hAlign="left" position={[0, 0, 0]} children="THREE" />
-                <Text hAlign="left" position={[0, -4.2, 0]} children="FIBER" />
-                <Text hAlign="left" position={[12, 0, 0]} children="4" size={3} />
-                <Text hAlign="left" position={[16.5, -4.2, 0]} children="X" /> */}
-
-                <Text hAlign="left" position={[0.7625, 1.5, -4]} children="Shigeru McPherson" size={5} />
-                <Text hAlign="left" position={[0, 0.8125, -4]} children="digital designer • art director" size={3} />
-            </group>
-        )
-    }
-
-    //#endregion ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
 
 
 
     return (
         <group>
-            {/* <Hed /> */}
+        {/* <group ref={scene_Ref}> */}
+            <Hed />
             <Logo />
-            <Cubes />
+            {/* <Logo nodeID='thisLogo' /> */}
+            {/* <Cubes /> */}
             <BackDrop />
             <GroundPlane />
-
-            <Jumbo />
         </group>
-    )
+    );
 }

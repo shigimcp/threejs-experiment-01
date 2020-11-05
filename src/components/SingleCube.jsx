@@ -91,6 +91,7 @@ export default function Cube() {
         <mesh ref={meshRef} position={position} onClick={e => onClick(e)} onPointerOver={e => onHover(e, true)} onPointerOut={e => onHover(e, false)} castShadow receiveShadow>
             <boxBufferGeometry attach="geometry" args={cubeDims} />
             <meshStandardMaterial attach="material" color={color} roughness={0.6} side={DoubleSide} metalness={0.4} />
+            {/* <meshPhongMaterial attach="material" color={color} roughness={0.6} side={DoubleSide} metalness={0.4} /> */}
         </mesh>
     );
-};
+}
