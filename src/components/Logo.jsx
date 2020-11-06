@@ -28,20 +28,6 @@ const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-ex
 
 
 
-//#region ==================== FUNCTIONS ====================
-
-// function centerObject(thisObject) {
-//     console.log('');
-//     console.log('==================== FUNCTION: centerObject(thisObject) ====================');
-//     console.log('thisObject = ');
-//     console.log(thisObject);
-
-// }
-
-//#endregion ==================== FUNCTIONS ====================
-
-
-
 //#region ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 function LogoMesh(props) {
@@ -78,16 +64,9 @@ function LogoMesh(props) {
     //#region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
     let extrudeSettings = {
-        // curveSegments: 7,
-        // steps: 2,
-        // depth: 5, 
-        // // depth: 2.5,
-        // bevelEnabled: false,
-
         curveSegments: 7,
         steps: 1,
         depth: 5,
-        // depth: 2.5,
         bevelEnabled: false,
 
         // curveSegments: 7,
@@ -101,15 +80,9 @@ function LogoMesh(props) {
     };
 
 
-    // console.log('extrudeSettings.depth = ' + extrudeSettings.depth);
-
-
     if (props.extrudeDir === 'negative') {
         extrudeSettings.depth = extrudeSettings.depth * -1;
     };
-
-
-    // console.log('extrudeSettings.depth = ' + extrudeSettings.depth);
 
     //#endregion -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
@@ -180,9 +153,6 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                // setCenter([-bSphere.center.x * 0.8, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.752252546, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.675678, 0, -bSphere.center.z]);
                 setCenter([-bSphere.center.x * 0.739997454, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
@@ -202,9 +172,6 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                // setCenter([-bSphere.center.x * 0.975, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.123654369, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.546841, 0, -bSphere.center.z]);
                 setCenter([-bSphere.center.x * 0.91434256, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
@@ -224,9 +191,6 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                // setCenter([-bSphere.center.x * 0.7, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.100181347, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.81067, 0, -bSphere.center.z]);
                 setCenter([-bSphere.center.x * 0.61677378, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
@@ -246,13 +210,6 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                // setCenter([-bSphere.center.x * 0.809716599190283, 0, 0]);
-                // setCenter([-bSphere.center.x * 0.809716599190283, 0, -0.5]);
-                // setCenter([-bSphere.center.x * 0.809716599190283, 0, -bSphere.center.z]);
-
-                // setCenter([-bSphere.center.x * 0.9, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.021276596, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.6175, 0, -bSphere.center.z]);
                 setCenter([-bSphere.center.x * 0.809716599, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
@@ -272,13 +229,6 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                // setCenter([-bSphere.center.x * 0.798522414124903, 0, 0]);
-                // setCenter([-bSphere.center.x * 0.798522414124903, 0, -0.5]);
-                // setCenter([-bSphere.center.x * 0.798522414124903, 0, -bSphere.center.z]);
-
-                // setCenter([-bSphere.center.x * 0.85, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.02917342, 0, -bSphere.center.z]);
-                // setCenter([-bSphere.center.x * 0.626, 0, -bSphere.center.z]);
                 setCenter([-bSphere.center.x * 0.798722045, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
@@ -298,8 +248,6 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                // setCenter([-bSphere.center.x, 0, 0]);
-                // setCenter([-bSphere.center.x, 0, -0.5]);
                 setCenter([-bSphere.center.x, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
@@ -411,35 +359,13 @@ function LogoMesh(props) {
     //#endregion -------------------- LOGOMESH responsive --------------------
 
 
-    // let meshScaleFactor = 0.005;
-    let meshScaleFactor = 0.05;
-
-    // const meshColor = "#000000";
-    // const meshColor = "#ff0000";
+    const meshScaleFactor = 0.05;
     const meshColor = "#0000ff";
-    // const meshColor = "#000022";
 
 
     return (
         <mesh id={props.id} scale={[meshScaleFactor, -meshScaleFactor, meshScaleFactor]} position={center} castShadow receiveShadow ref={logoMesh_Ref}>
-            {/* <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} roughness="0" metalness="0.4" /> */}
-            {/* <meshStandardMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} roughness="1" metalness="1" /> */}
-            {/* <meshStandardMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-
-            {/* <meshPhongMaterial attach="material" color={meshColor} side={DoubleSide} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshPhongMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-
-            {/* <meshBasicMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshDepthMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshDistanceMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshLambertMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshMatcapMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
             <meshNormalMaterial attach="material" color={meshColor} wireframe={true} depthWrite={true} transparent opacity={props.fillOpacity} />
-            {/* <meshPhongMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshPhysicalMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshStandardMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-            {/* <meshToonMaterial attach="material" color={meshColor} depthWrite={true} transparent opacity={props.fillOpacity} /> */}
-
             <extrudeBufferGeometry attach="geometry" args={[[props.shape], extrudeSettings]} />
         </mesh>
     );
@@ -507,12 +433,11 @@ function LogoShape(props) {
 
     //#region -------------------- LOGOSHAPE spin --------------------
 
-    // // const testRotation = [0, 90, 0];
+    // const testRotation = [0, 90, 0];
 
-    // useFrame(() => {
-    //     logoGroup_Ref.current.rotation.y += 0.025;
-    //     // logoGroup_Ref.current.rotation.y = -0.5;
-    // });
+    useFrame(() => {
+        logoGroup_Ref.current.rotation.y += 0.025;
+    });
 
     //#endregion -------------------- LOGOSHAPE spin --------------------
 
@@ -539,26 +464,8 @@ export default function Logo() {
     // console.log('====================  export default function Logo()  ====================');
 
 
-    const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
-
-
-
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02.svg';
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02_sm.svg';
-
-    // const logoSVG01 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
-    // const logoSVG02 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_rev.svg';
-
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_02.svg';
-
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_03_sm.svg';
-
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude01.svg';
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_complete.svg';
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude03_stroke.svg';
-
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude01.svg';
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_stroke.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
+    const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_stroke.svg';
 
 
     //#region -------------------- WINDOW RESIZE - REF: https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c --------------------
@@ -592,24 +499,10 @@ export default function Logo() {
     //#endregion -------------------- WINDOW RESIZE - REF: https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c --------------------
 
 
-    // <LogoShape url={logoSVG} fillOpacity="0.25" />
-    // <LogoShape url={logoSVG} fillOpacity="0.25" ref={logoGroup_Ref} />
-    // <LogoShape url={logoSVG} fillOpacity="0.25" ref={logoGroup_FwdRef} />
 
     return (
         <>
-            {/* <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.25" extrudeDir="positive" />
-            <LogoShape url="https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/logo/shigeru_logo_extrude_clean.svg" fillOpacity="0.25" extrudeDir="negative" />
-
-            <LogoShape url={logoSVG} fillOpacity="0.25" extrudeDir="positive" ref={logoGroup_Ref} />
-            <LogoShape url={logoSVG} fillOpacity="0.25" extrudeDir="negative" ref={logoGroup_Ref} />
-
-            <LogoShape url={logoSVG} fillOpacity="0.25" />
-            <LogoShape url={logoSVG} fillOpacity="0.25" ref={logoGroup_Ref} /> */}
-
             <LogoShape id="logoSVGid" url={logoSVG} fillOpacity="0.25" extrudeDir="positive" />
-            {/* <LogoShape id="logoSVG01id" url={logoSVG01} fillOpacity="0.5" extrudeDir="positive" />
-            <LogoShape id="logoSVG02id" url={logoSVG02} fillOpacity="0.5" extrudeDir="negative" /> */}
         </>
     );
 }
