@@ -472,6 +472,7 @@ export default function Logo() {
     // const logoSVG02 = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_rev.svg';
 
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm_02.svg';
+
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_03_sm.svg';
 
 
