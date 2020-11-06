@@ -475,6 +475,10 @@ export default function Logo() {
 
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_03_sm.svg';
 
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude01.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_complete.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude03_stroke.svg';
+
 
     //#region -------------------- ASSETS _Ref --------------------
 
