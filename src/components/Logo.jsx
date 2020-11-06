@@ -465,6 +465,7 @@ export default function Logo() {
 
     const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
 
+
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02.svg';
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02_sm.svg';
 
@@ -478,6 +479,9 @@ export default function Logo() {
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude01.svg';
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_complete.svg';
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude03_stroke.svg';
+
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude01.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_stroke.svg';
 
 
     //#region -------------------- ASSETS _Ref --------------------
