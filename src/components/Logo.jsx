@@ -180,7 +180,10 @@ function LogoMesh(props) {
                 // console.log(logoMesh_Ref.current);
                 // console.log('props.nodeID = ' + props.nodeID);
 
-                setCenter([-bSphere.center.x * 0.752252546, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.8, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.752252546, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.675678, 0, -bSphere.center.z]);
+                setCenter([-bSphere.center.x * 0.739997454, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
 
@@ -189,9 +192,53 @@ function LogoMesh(props) {
                 //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_00' - - - - - - - - - - -
 
 
-            case 'kanji_ko01ID':
+            case 'kanji_01':
 
-                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko01ID' - - - - - - - - - - -
+                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_01' - - - - - - - - - - -
+
+                // console.log('');
+                // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
+                // console.log(logoMesh_Ref.current.material.color);
+                // console.log(logoMesh_Ref.current);
+                // console.log('props.nodeID = ' + props.nodeID);
+
+                // setCenter([-bSphere.center.x * 0.975, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.123654369, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.546841, 0, -bSphere.center.z]);
+                setCenter([-bSphere.center.x * 0.91434256, 0, -bSphere.center.z]);
+
+                // console.log('center = ' + center);
+
+                break;
+
+                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_01' - - - - - - - - - - -
+
+
+            case 'kanji_02':
+
+                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_02' - - - - - - - - - - -
+
+                // console.log('');
+                // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
+                // console.log(logoMesh_Ref.current.material.color);
+                // console.log(logoMesh_Ref.current);
+                // console.log('props.nodeID = ' + props.nodeID);
+
+                // setCenter([-bSphere.center.x * 0.7, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.100181347, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.81067, 0, -bSphere.center.z]);
+                setCenter([-bSphere.center.x * 0.61677378, 0, -bSphere.center.z]);
+
+                // console.log('center = ' + center);
+
+                break;
+
+                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_02' - - - - - - - - - - -
+
+
+            case 'kanji_ko01':
+
+                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko01' - - - - - - - - - - -
 
                 // console.log('');
                 // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
@@ -203,18 +250,21 @@ function LogoMesh(props) {
                 // setCenter([-bSphere.center.x * 0.809716599190283, 0, -0.5]);
                 // setCenter([-bSphere.center.x * 0.809716599190283, 0, -bSphere.center.z]);
 
-                setCenter([-bSphere.center.x * 0.021276596, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.9, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.021276596, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.6175, 0, -bSphere.center.z]);
+                setCenter([-bSphere.center.x * 0.809716599, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
 
                 break;
 
-                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko01ID' - - - - - - - - - - -
+                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko01' - - - - - - - - - - -
 
 
-            case 'kanji_ko02ID':
+            case 'kanji_ko02':
 
-                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko02ID' - - - - - - - - - - -
+                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko02' - - - - - - - - - - -
 
                 // console.log('');
                 // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
@@ -226,13 +276,16 @@ function LogoMesh(props) {
                 // setCenter([-bSphere.center.x * 0.798522414124903, 0, -0.5]);
                 // setCenter([-bSphere.center.x * 0.798522414124903, 0, -bSphere.center.z]);
 
-                setCenter([-bSphere.center.x * 0.02917342, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.85, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.02917342, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.626, 0, -bSphere.center.z]);
+                setCenter([-bSphere.center.x * 0.798722045, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
 
                 break;
 
-                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko02ID' - - - - - - - - - - -
+                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko02' - - - - - - - - - - -
 
 
             default:
