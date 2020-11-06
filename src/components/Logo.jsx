@@ -465,8 +465,8 @@ export default function Logo() {
 
 
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
-    const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_stroke.svg';
-    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_stroke.svg';
+    // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_stroke.svg';
+    const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_stroke.svg';
 
 
     //#region -------------------- WINDOW RESIZE - REF: https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c --------------------
