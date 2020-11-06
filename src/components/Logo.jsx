@@ -170,6 +170,25 @@ function LogoMesh(props) {
             //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'glassesID' - - - - - - - - - - -
 
 
+            case 'kanji_00':
+
+                //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_00' - - - - - - - - - - -
+
+                // console.log('');
+                // console.log('- - - - - - - - - - - LOGOMESH center: switch (props.nodeID) ' + props.nodeID + ' - - - - - - - - - - -');
+                // console.log(logoMesh_Ref.current.material.color);
+                // console.log(logoMesh_Ref.current);
+                // console.log('props.nodeID = ' + props.nodeID);
+
+                setCenter([-bSphere.center.x * 0.752252546, 0, -bSphere.center.z]);
+
+                // console.log('center = ' + center);
+
+                break;
+
+                //#endregion - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_00' - - - - - - - - - - -
+
+
             case 'kanji_ko01ID':
 
                 //#region - - - - - - - - - - - LOGOMESH center: case props.nodeID = 'kanji_ko01ID' - - - - - - - - - - -
@@ -182,7 +201,9 @@ function LogoMesh(props) {
 
                 // setCenter([-bSphere.center.x * 0.809716599190283, 0, 0]);
                 // setCenter([-bSphere.center.x * 0.809716599190283, 0, -0.5]);
-                setCenter([-bSphere.center.x * 0.809716599190283, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.809716599190283, 0, -bSphere.center.z]);
+
+                setCenter([-bSphere.center.x * 0.021276596, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
 
@@ -203,7 +224,9 @@ function LogoMesh(props) {
 
                 // setCenter([-bSphere.center.x * 0.798522414124903, 0, 0]);
                 // setCenter([-bSphere.center.x * 0.798522414124903, 0, -0.5]);
-                setCenter([-bSphere.center.x * 0.798522414124903, 0, -bSphere.center.z]);
+                // setCenter([-bSphere.center.x * 0.798522414124903, 0, -bSphere.center.z]);
+
+                setCenter([-bSphere.center.x * 0.02917342, 0, -bSphere.center.z]);
 
                 // console.log('center = ' + center);
 
@@ -431,12 +454,12 @@ function LogoShape(props) {
 
     //#region -------------------- LOGOSHAPE spin --------------------
 
-    // const testRotation = [0, 90, 0];
+    // // const testRotation = [0, 90, 0];
 
-    useFrame(() => {
-        logoGroup_Ref.current.rotation.y += 0.025;
-        // logoGroup_Ref.current.rotation.y = -0.5;
-    });
+    // useFrame(() => {
+    //     logoGroup_Ref.current.rotation.y += 0.025;
+    //     // logoGroup_Ref.current.rotation.y = -0.5;
+    // });
 
     //#endregion -------------------- LOGOSHAPE spin --------------------
 
@@ -466,6 +489,7 @@ export default function Logo() {
     const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
 
 
+
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02.svg';
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_02_sm.svg';
 
@@ -482,64 +506,6 @@ export default function Logo() {
 
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude01.svg';
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_stroke.svg';
-
-
-    //#region -------------------- ASSETS _Ref --------------------
-
-    // const logoGroup_Ref = useRef();
-    // const logoGroup_FwdRef = useRef();
-
-    // const logoShape_Ref = useRef();
-    // const logoShapePOS_Ref = useRef();
-    // const logoShapeNEG_Ref = useRef();
-
-    // console.log('logoGroup_Ref.current = ' + logoGroup_Ref.current);
-    // console.log('logoShapePOS_Ref.current = ' + logoShapePOS_Ref.current);
-    // console.log('logoShapeNEG_Ref.current = ' + logoShapeNEG_Ref.current);
-
-    //#endregion -------------------- ASSETS _Ref --------------------
-
-
-    //#region -------------------- useState DEFs --------------------
-
-    // // console.log('');
-    // // console.log('-------------------- useState DEFs --------------------');
-
-    // let [windowWidth, setWindowWidth] = useState(getWidth());
-
-    // // console.log('windowWidth = ' + windowWidth);
-
-    //#endregion -------------------- useState DEFs --------------------
-
-
-    //#region -------------------- LOGOSHAPE center --------------------
-
-    // const [center, setCenter] = useState([0, 0, 0])
-
-    // const logoGroup_Ref = useRef()
-
-    // useEffect(() => {
-
-    //     const bBox = new Box3().setFromObject(logoGroup_Ref.current)
-    //     const bSphere = new Sphere()
-
-    //     bBox.getBoundingSphere(bSphere)
-
-    //     setCenter([0, -bSphere.center.y, 0])
-
-    // }, []);
-
-    //#endregion -------------------- LOGOSHAPE center --------------------
-
-
-    //#region -------------------- LOGOSHAPE spin --------------------
-
-    // useFrame(() => {
-    //     logoGroup_Ref.current.rotation.y += 0.025;
-    //     // logoGroup_FwdRef.current.rotation.y += 0.025;
-    // });
-
-    //#endregion -------------------- LOGOSHAPE spin --------------------
 
 
     //#region -------------------- WINDOW RESIZE - REF: https://dev.to/vitaliemaldur/resize-event-listener-using-react-hooks-1k0c --------------------
