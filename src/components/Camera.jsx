@@ -1,4 +1,4 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React from "react";
 import { useRef } from "react";
@@ -11,11 +11,11 @@ import { useThree } from "react-three-fiber";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // extend({ OrbitControls });
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
 
-//#region ==================== CAMERA01 - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
+// #region ==================== CAMERA01 - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
 
 // function Camera01(props) {
 //     const cameraRef = useRef();
@@ -36,7 +36,7 @@ import { useThree } from "react-three-fiber";
 //     );
 // }
 
-//#endregion ==================== CAMERA01 - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
+// #endregion ==================== CAMERA01 - REF: https://github.com/pmndrs/react-three-fiber/blob/master/recipes.md#using-your-own-camera-rig ====================
 
 
 // export default function Camera() {

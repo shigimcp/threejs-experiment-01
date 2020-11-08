@@ -1,4 +1,4 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React, { useRef } from "react";
 import { map } from "lodash";
@@ -6,11 +6,11 @@ import { useFrame } from "react-three-fiber";
 
 import Cube from "./SingleCube";
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
 
-//#region ==================== CUBES - REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
+// #region ==================== CUBES - REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
 
 export default function Cubes(props) {
     const cubeGroup = useRef();
@@ -31,4 +31,4 @@ export default function Cubes(props) {
     );
 }
 
-//#endregion ==================== CUBES - REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
+// #endregion ==================== CUBES - REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================

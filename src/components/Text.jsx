@@ -1,4 +1,4 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React, { useMemo } from 'react';
 
@@ -7,10 +7,10 @@ import { useLoader, useUpdate } from 'react-three-fiber';
 
 // import { TestFont } from '../fonts/ChaleParNinSix.json';
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
-//#region ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+// #region ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
 
 export default function Text ({ children, vAlign = 'center', hAlign = 'center', size = 1, color = '#0000ff', ...props }) {
 
@@ -44,4 +44,4 @@ export default function Text ({ children, vAlign = 'center', hAlign = 'center', 
     )
 }
 
-//#endregion ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+// #endregion ==================== REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================

@@ -1,4 +1,4 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React from 'react';
 // import { useState } from 'react';
@@ -13,28 +13,157 @@ import { useLoader } from 'react-three-fiber';
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
 import { useFrame } from 'react-three-fiber';
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
 
-//#region ==================== CONSTANTS ====================
+// #region ==================== CONSTANTS / VARS ====================
 
-const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
 // const localLoc = '../images/';
+const remoteGitImageLoc = 'https://raw.githubusercontent.com/shigimcp/threejs-experiment-01/main/src/.github/images/';
 
-// const getWidth = () => window.innerWidth
-//     || document.documentElement.clientWidth
-//     || document.body.clientWidth;
+// const meshScaleFactor = 0.05;
+// let meshScaleFactor;
+// const meshColor = "#0000ff";
 
-//#endregion ==================== CONSTANTS ====================
+const getWidth = () => window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+
+const getHeight = () => window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+
+// #endregion ==================== CONSTANTS / VARS ====================
 
 
 
-//#region ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
+// #region ==================== RESPONSIVE: meshScaleFactor (dirty soln) ====================
+
+// #region -------------------- RESPONSIVE: INIT - meshScaleFactor (dirty soln) --------------------
+
+// // console.log('');
+// // console.log('getWidth() = ' + getWidth() + '     getHeight() = ' + getHeight());
+
+// // console.log('window.screen.orientation = ' + window.screen.orientation);
+// // console.log('window.screen.orientation =');
+// // console.log(window.screen.orientation);
+
+// // console.log('document.body.clientWidth = ' + document.body.clientWidth);
+
+// // if (getWidth() > 768) {
+// // if (getWidth() > 768 && getHeight() < getWidth()) {
+// // if (window.screen.orientation.type === 'landscape-primary') {
+// if (getHeight() < getWidth() || window.screen.orientation.type === 'landscape-primary') {
+// // if ((getWidth() > 768 && getHeight() < getWidth()) || window.screen.orientation.type === 'landscape-primary') {
+
+//     // console.log(window.screen.orientation.type);
+//     console.log('orienttion = landscape');
+
+//     meshScaleFactor = 0.05;
+
+// } else {
+
+//     // console.log(window.screen.orientation.type);
+//     console.log('orienttion = portrait');
+
+//     meshScaleFactor = 0.025;
+// }
+
+// #endregion -------------------- RESPONSIVE: INIT - meshScaleFactor (dirty soln) --------------------
+
+
+// #region -------------------- RESPONSIVE: WINDOW RESIZE - meshScaleFactor (dirty soln) --------------------
+
+// window.addEventListener('resize', () => {
+
+
+//     // console.log('');
+//     // console.log('window.screen.orientation.type = ' + window.screen.orientation.type);
+//     // console.log('window.screen.orientation.type =');
+//     // console.log(window.screen.orientation.type);
+
+//     // console.log('document.body.clientWidth = ' + document.body.clientWidth);
+
+//     // this.setState({ windowWidth: document.body.clientWidth })
+
+    // // if (getWidth() > 768) {
+    // // if (getWidth() > 768 && getHeight() < getWidth()) {
+    // // if (window.screen.orientation.type === 'landscape-primary') {
+    // if (getHeight() < getWidth() || window.screen.orientation.type === 'landscape-primary') {
+    // // if ((getWidth() > 768 && getHeight() < getWidth()) || window.screen.orientation.type === 'landscape-primary') {
+
+    //     // console.log(window.screen.orientation.type);
+    //     console.log('orienttion = landscape');
+
+    //     meshScaleFactor = 0.05;
+
+    // } else {
+
+    //     // console.log(window.screen.orientation.type);
+    //     console.log('orienttion = portrait');
+
+    //     meshScaleFactor = 0.025;
+    // }
+// });
+
+// #endregion -------------------- RESPONSIVE: WINDOW RESIZE - meshScaleFactor (dirty soln) --------------------
+
+// #endregion ==================== RESPONSIVE: meshScaleFactor (dirty soln) ====================
+
+
+
+// #region ==================== FUNCTIONS ====================
+
+// #region -------------------- FUNCTION: checkWindow(thisObject) --------------------
+
+function checkWindow(thisObject) {
+
+    // console.log('');
+    // console.log('-------------------- FUNCTION: checkWindow(thisObject) --------------------');
+    // // console.log('thisObject = ' + thisObject);
+    // console.log('thisObject = ');
+    // console.log(thisObject);
+
+
+    let thisScale;
+
+    if (getHeight() < getWidth() || window.screen.orientation.type === 'landscape-primary') {
+
+        // console.log(window.screen.orientation.type);
+        // console.log('orienttion = landscape');
+
+        thisScale = 1;
+
+    } else {
+
+        // console.log(window.screen.orientation.type);
+        // console.log('orienttion = portrait');
+
+        thisScale = 0.45;
+    }
+
+    thisObject.scale.x = thisScale;
+    thisObject.scale.y = thisScale;
+    thisObject.scale.z = thisScale;
+}
+
+// #endregion -------------------- FUNCTION: checkWindow(thisObject) --------------------
+
+// #endregion ==================== FUNCTIONS ====================
+
+
+
+// #region ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 function LogoMesh(props) {
 
-    //#region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
+    const meshScaleFactor = 0.05;
+    // const meshScaleFactor = 1;
+    const meshColor = "#0000ff";
+
+
+    // #region -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
     let extrudeSettings = {
         curveSegments: 7,
@@ -57,11 +186,7 @@ function LogoMesh(props) {
         extrudeSettings.depth = extrudeSettings.depth * -1;
     };
 
-    //#endregion -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
-
-
-    const meshScaleFactor = 0.05;
-    const meshColor = "#0000ff";
+    // #endregion -------------------- LOGOMESH extrudeSettings - REF: https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry --------------------
 
 
     return (
@@ -72,19 +197,20 @@ function LogoMesh(props) {
     );
 }
 
-//#endregion ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
+// #endregion ==================== LOGOMESH: EXTRUDE - REF: https://spectrum.chat/react-three-fiber/general/hole-from-imported-svg-is-reversing-should-be-a-donut-instead-is-a-dot~d235bb19-8d5c-4c4b-af74-faae8484204f ====================
 
 
 
-//#region ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+// #region ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
 // const logoShape_Ref = React.createRef();
+
 
 function LogoShape(props) {
 // const LogoShape = React.forwardRef((props, logoShape_Ref) => {
 
 
-    //#region -------------------- LOGOSHAPE shapes --------------------
+    // #region -------------------- LOGOSHAPE shapes --------------------
 
     const { paths } = useLoader(SVGLoader, props.url)
 
@@ -96,47 +222,86 @@ function LogoShape(props) {
         ), [paths, props]
     );
 
-    //#endregion -------------------- LOGOSHAPE shapes --------------------
+    // #endregion -------------------- LOGOSHAPE shapes --------------------
 
 
-    //#region -------------------- LOGOMESH center - REF: https://muffinman.io/three-js-extrude-svg-path/ --------------------
+    const logoShape_Ref = useRef();
+
+    // #region -------------------- LOGOSHAPE center - REF: https://muffinman.io/three-js-extrude-svg-path/ --------------------
 
     useEffect(() => {
 
-        // console.log(logoShape_Ref.current.children);
+        // #region - - - - - - - - - - - LOGOSHAPE useEffect: center - REF: https://muffinman.io/three-js-extrude-svg-path/ - - - - - - - - - - -
 
-        const bBox = new Box3().setFromObject(logoShape_Ref.current);
-        const bSize = new Vector3();
+        let bBox = new Box3().setFromObject(logoShape_Ref.current);
+        let bSize = new Vector3();
 
+        // bBox.setFromObject(logoShape_Ref.current);
         bBox.getSize(bSize);
 
+
+        // console.log(logoShape_Ref.current.children);
         // console.log(bBox);
         // console.log(bSize);
-        // console.log(bBox.getSize(bSize));
+        // // console.log(bBox.getSize(bSize));
 
-        const xOffset = bSize.x * -0.5;
-        // const yOffset = bSize.y * -0.5;
-        const yOffset = bSize.y * 0.5;
+
+        let xOffset = bSize.x * -0.5;
+        let yOffset = bSize.y * 0.5;
 
         logoShape_Ref.current.children.forEach(item => {
             item.position.x = xOffset;
             item.position.y = yOffset;
         })
 
+        // #endregion - - - - - - - - - - - LOGOSHAPE useEffect: center - REF: https://muffinman.io/three-js-extrude-svg-path/ - - - - - - - - - - -
+
+
+        checkWindow(logoShape_Ref.current);
+
+
+        // #region - - - - - - - - - - - LOGOSHAPE useEffect: RESPONSIVE: WINDOW RESIZE - resizeListener - - - - - - - - - - -
+
+        let timeoutId = null;
+
+        const resizeListener = () => {
+
+            // console.log('');
+            // console.log('- - - - - - - - - - - LOGOSHAPE useEffect: RESPONSIVE: WINDOW RESIZE - resizeListener - - - - - - - - - - -');
+            // console.log('logoShape_Ref.current.scale = ');
+            // console.log(logoShape_Ref.current.scale);
+            // console.log(logoShape_Ref.current);
+
+
+            // prevent execution of previous setTimeout
+            clearTimeout(timeoutId);
+
+            timeoutId = setTimeout(() => checkWindow(logoShape_Ref.current))
+        }
+
+        window.addEventListener('resize', resizeListener);
+
+        return () => {
+            window.removeEventListener('resize', resizeListener);
+        }
+
+        // #endregion - - - - - - - - - - - LOGOSHAPE useEffect: RESPONSIVE: WINDOW RESIZE - resizeListener - - - - - - - - - - -
+
+
     }, []);
 
-    //#endregion -------------------- LOGOMESH center - REF: https://muffinman.io/three-js-extrude-svg-path/ --------------------
+    // #endregion -------------------- LOGOSHAPE center - REF: https://muffinman.io/three-js-extrude-svg-path/ --------------------
 
 
-    //#region -------------------- LOGOSHAPE spin --------------------
+    // #region -------------------- LOGOSHAPE spin --------------------
 
-    const logoShape_Ref = useRef()
+    // const logoShape_Ref = useRef()
 
     useFrame(() => {
         logoShape_Ref.current.rotation.y += 0.025;
     });
 
-    //#endregion -------------------- LOGOSHAPE spin --------------------
+    // #endregion -------------------- LOGOSHAPE spin --------------------
 
 
     return (
@@ -151,14 +316,10 @@ function LogoShape(props) {
 //     );
 // }, [logoShape_Ref]);
 
-//#endregion ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
+// #endregion ==================== LOGOSHAPE: SVG - REF: https://codesandbox.io/s/react-three-fiber-react-spring-svg-parallax-forked-8hdg1 ====================
 
 
 export default function Logo() {
-
-    // console.log('');
-    // console.log('====================  export default function Logo()  ====================');
-
 
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude_clean_sm.svg';
     // const logoSVG = remoteGitImageLoc + 'logo/shigeru_logo_extrude02_stroke.svg';

@@ -1,14 +1,14 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React, { useRef, useMemo } from 'react';
 
 import * as THREE from 'three';
 import { useLoader, useUpdate } from 'react-three-fiber';
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
-//#region ==================== FUNCTION: Text - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+// #region ==================== FUNCTION: Text - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
 
 function Text({ children, vAlign = 'center', hAlign = 'center', size = 1, color = '#0000ff', ...props }) {
 
@@ -44,7 +44,7 @@ function Text({ children, vAlign = 'center', hAlign = 'center', size = 1, color 
     )
 }
 
-//#endregion ==================== FUNCTION: Text - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
+// #endregion ==================== FUNCTION: Text - REF: https://spectrum.chat/react-three-fiber/general/best-way-to-render-text~8597ed37-45e2-4d9a-998d-7351ad5b08ef ====================
 
 
 export default function Hed() {

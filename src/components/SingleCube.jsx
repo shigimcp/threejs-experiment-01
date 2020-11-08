@@ -1,11 +1,11 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React, { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import { random } from "lodash";
 import { useFrame } from "react-three-fiber";
 import { DoubleSide } from "three";
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
 // export default () => {
@@ -20,7 +20,7 @@ export default function Cube() {
     const isActiveRef = useRef(isActive);
 
 
-    //#region ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
+    // #region ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
     //        ==================== REF: https://codesandbox.io/s/alligatordemoreact-three-fiber-forked-ic94p ====================
 
     // -------------------- position --------------------
@@ -79,7 +79,7 @@ export default function Cube() {
         [setIsActive]
     );
 
-    //#endregion ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
+    // #endregion ==================== REF: https://www.digitalocean.com/community/tutorials/react-react-with-threejs ====================
 
     const cubeDims = [0.005, 0.75, 0.75];
 

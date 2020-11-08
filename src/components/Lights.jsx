@@ -1,17 +1,17 @@
-//#region ==================== IMPORTS ====================
+// #region ==================== IMPORTS ====================
 
 import React from "react";
 
-//#endregion ==================== IMPORTS ====================
+// #endregion ==================== IMPORTS ====================
 
 
 
 // export default () => {
 export default function Lights(props) {
 
-    //#region ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
+    // #region ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
-    //#region -------------------- LIGHTS: KeyLight --------------------
+    // #region -------------------- LIGHTS: KeyLight --------------------
 
     function KeyLight({ brightness, color }) {
         return (
@@ -27,10 +27,10 @@ export default function Lights(props) {
         );
     }
 
-    //#endregion -------------------- LIGHTS: KeyLight --------------------
+    // #endregion -------------------- LIGHTS: KeyLight --------------------
 
 
-    //#region -------------------- LIGHTS: FillLight --------------------
+    // #region -------------------- LIGHTS: FillLight --------------------
 
     function FillLight({ brightness, color }) {
         return (
@@ -46,10 +46,10 @@ export default function Lights(props) {
         );
     }
 
-    //#endregion -------------------- LIGHTS: FillLight --------------------
+    // #endregion -------------------- LIGHTS: FillLight --------------------
 
 
-    //#region -------------------- LIGHTS: RimLight --------------------
+    // #region -------------------- LIGHTS: RimLight --------------------
 
     function RimLight({ brightness, color }) {
         return (
@@ -64,10 +64,10 @@ export default function Lights(props) {
         );
     }
 
-    //#endregion -------------------- LIGHTS: RimLight --------------------
+    // #endregion -------------------- LIGHTS: RimLight --------------------
 
 
-    //#region -------------------- LIGHTS: ShadowLight --------------------
+    // #region -------------------- LIGHTS: ShadowLight --------------------
 
     function ShadowLight() {
         return (
@@ -87,9 +87,9 @@ export default function Lights(props) {
         );
     }
 
-    //#endregion -------------------- LIGHTS: ShadowLight --------------------
+    // #endregion -------------------- LIGHTS: ShadowLight --------------------
 
-    //#endregion ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
+    // #endregion ==================== LIGHTS - REF: https://codeworkshop.dev/blog/2019-12-31-learn-the-basics-of-react-three-fiber-by-building-a-three-point-lighting-setup/ ====================
 
 
     return (
